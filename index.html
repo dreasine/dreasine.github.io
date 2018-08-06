@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  I-MAY-FALL </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
+<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          
+
+
+
+
+<div class="profile sildeUpMin">
+	
+		<a href="/">
+			<img class="avatar" src="/images/header.jpg">
+		</a>
+		<p class="author">Ginko</p>
+		
+		<div class="social">
+   		      		
+			<a target="_blank" class="social-links" href="https://github.com/116245">		
+				<i class="iconfont icon-Github"></i>
+			</a>	
+	          		
+			<a target="_blank" class="social-links" href="">		
+				<i class="iconfont icon-Weibo"></i>
+			</a>	
+	          		
+			<a target="_blank" class="social-links" href="">		
+				<i class="iconfont icon-Facebook"></i>
+			</a>	
+	          		
+			<a target="_blank" class="social-links" href="">		
+				<i class="iconfont icon-Twitter"></i>
+			</a>	
+	          		
+			<a target="_blank" class="social-links" href="">		
+				<i class="iconfont icon-Instagram"></i>
+			</a>	
+	          		
+			<a target="_blank" class="social-links" href="">		
+				<i class="iconfont icon-LinkedIn"></i>
+			</a>	
+	    
+    	</div>		
+</div>
+
+
+    	  	
+  		
+    			
+
+<article class="article">		
+	   
+	<div class="article-header">
+	    
+		<a class="article-title" href="/8102/08/02/welcome/">Welcome</a>  
+	       
+		 
+
+		<div class="article-meta">
+			Aug 02, 8102
+			
+		</div>
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		
+			<script>
+				console.error("Error: [hexo-tag-aplayer] Specified asset file not found (music/zmz.mp3)");
+			</script>
+
+        <div id="aplayer-RNUgHEPQ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-RNUgHEPQ"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "Shiver",
+              author: "Lucy Rose",
+              url: "music/shiver.mp3",
+              pic: "",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+		  	  
+	</div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/8102/08/02/welcome/">阅读更多</a> 	
+	</div>	
+    
+</article>     
+     	
+    	  	
+  		
+    			
+
+<article class="article">		
+	   
+	<div class="article-header">
+	    
+		<a class="article-title" href="/2018/08/06/introduction-tensorflow/">Introduction-tensorflow</a>  
+	       
+		 
+
+		<div class="article-meta">
+			Aug 06, 2018
+			
+				<span class="iconfont icon-star"></span>
+				            
+						<a class="article-tag" href="/tags/Tensorflow/">Tensorflow</a>           
+				
+			
+		</div>
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		
+			<p>转自：<a href="https://eternalfeather.github.io/" target="_blank" rel="noopener">https://eternalfeather.github.io/</a></p>
+<h1 id="Tensorflow入门"><a href="#Tensorflow入门" class="headerlink" title="Tensorflow入门"></a>Tensorflow入门</h1><h1 id="介绍（Introduction）"><a href="#介绍（Introduction）" class="headerlink" title="介绍（Introduction）"></a>介绍（Introduction）</h1><p>Tensorflow是一个使用数据流图（Data flow graphs）技术进行数值运算的函式库。每一张图都是由节点（Node）和边（Edge）组成的。Tensorflow具有以下几点特性：</p>
+<h2 id="灵活性"><a href="#灵活性" class="headerlink" title="灵活性"></a>灵活性</h2><p>Tensorflow不是一个严格意义上的神经网络函式库，只要是能够使用数据流图来描述的计算问题，都能够通过Tensorflow来实现。与此同时还能够用简单的Python来实现高层次的功能。</p>
+<h2 id="可迁移性"><a href="#可迁移性" class="headerlink" title="可迁移性"></a>可迁移性</h2><p>Tensorflow可以在任何具备CPU或者GPU的设备上运行，无需考虑复杂的环境配置问题，。</p>
+<h2 id="高效性"><a href="#高效性" class="headerlink" title="高效性"></a>高效性</h2><p>Tensorflow可以提升神经网络的训练效率，且具备代码统一的有优势，便于和同行分享。</p>
+		  	  
+	</div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2018/08/06/introduction-tensorflow/">阅读更多</a> 	
+	</div>	
+    
+</article>     
+     	
+    	  	
+  		
+    			
+
+<article class="article">		
+	   
+	<div class="article-header">
+	    
+		<a class="article-title" href="/2018/08/06/machine-learning-tutorial/">Machine-learning-tutorial</a>  
+	       
+		 
+
+		<div class="article-meta">
+			Aug 06, 2018
+			
+				<span class="iconfont icon-star"></span>
+				            
+						<a class="article-tag" href="/tags/Machine-Learning/">Machine Learning</a>           
+				
+			
+		</div>
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		
+			<p>转自：<a href="https://eternalfeather.github.io/" target="_blank" rel="noopener">https://eternalfeather.github.io/</a></p>
+<p><img src="https://i.imgur.com/E4dgb6O.jpg" alt=""></p>
+<h1 id="什么是机器学习"><a href="#什么是机器学习" class="headerlink" title="什么是机器学习"></a>什么是机器学习</h1><p>机器学习是由一帮计算机科学家们希望让计算机像人类一样思考而延伸出来的一门计算机理论。机器学习最早来自心理和生物科学，科学家们认为人和计算机其实没有什么差别，都是一大批相互连接的信息传递和存储元素所组成的系统。机器学习是一门典型的跨领域科学，其中包含了概率学、统计学等等方面。随着计算机性能的提升和计算机运算速度的升级，机器学习的应用才真正开始融入我们日常的生活当中。而不久的将来，机器学习必将成为人类探索机器世界的关键钥匙。<strong>总的来说</strong>，机器学习就是一个寻找方法的过程（Looking for a function）。我们所要做的就是构建一个function set（也就是model），其中的function结合起来<strong>能够真正将输入和输出拟合起来的function</strong>。</p>
+		  	  
+	</div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2018/08/06/machine-learning-tutorial/">阅读更多</a> 	
+	</div>	
+    
+</article>     
+     	
+    	  	
+  		
+    			
+
+<article class="article">		
+	   
+	<div class="article-header">
+	    
+		<a class="article-title" href="/2018/08/03/hexo-blog/">Hexo-blog</a>  
+	       
+		 
+
+		<div class="article-meta">
+			Aug 03, 2018
+			
+				<span class="iconfont icon-star"></span>
+				            
+						<a class="article-tag" href="/tags/Hexo/">Hexo</a>           
+				
+			
+		</div>
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		
+			<p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。</p>
+		  	  
+	</div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2018/08/03/hexo-blog/">阅读更多</a> 	
+	</div>	
+    
+</article>     
+     	
+
+
+
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+		
+		2018		
+	
+		Ginko
+		<br>
+<!--
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+-->
+
+		</div>			
+	 
+</footer>
+   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>

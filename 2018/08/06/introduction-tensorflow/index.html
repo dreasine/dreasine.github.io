@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  Introduction-Tensorflow |   I-MAY-FALL </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		Introduction-tensorflow
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		Aug 06, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			13632
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<p>转自：<a href="https://eternalfeather.github.io/" target="_blank" rel="noopener">https://eternalfeather.github.io/</a></p>
+<h1 id="Tensorflow入门"><a href="#Tensorflow入门" class="headerlink" title="Tensorflow入门"></a>Tensorflow入门</h1><h1 id="介绍（Introduction）"><a href="#介绍（Introduction）" class="headerlink" title="介绍（Introduction）"></a>介绍（Introduction）</h1><p>Tensorflow是一个使用数据流图（Data flow graphs）技术进行数值运算的函式库。每一张图都是由节点（Node）和边（Edge）组成的。Tensorflow具有以下几点特性：</p>
+<h2 id="灵活性"><a href="#灵活性" class="headerlink" title="灵活性"></a>灵活性</h2><p>Tensorflow不是一个严格意义上的神经网络函式库，只要是能够使用数据流图来描述的计算问题，都能够通过Tensorflow来实现。与此同时还能够用简单的Python来实现高层次的功能。</p>
+<h2 id="可迁移性"><a href="#可迁移性" class="headerlink" title="可迁移性"></a>可迁移性</h2><p>Tensorflow可以在任何具备CPU或者GPU的设备上运行，无需考虑复杂的环境配置问题，。</p>
+<h2 id="高效性"><a href="#高效性" class="headerlink" title="高效性"></a>高效性</h2><p>Tensorflow可以提升神经网络的训练效率，且具备代码统一的有优势，便于和同行分享。</p>
+<a id="more"></a>
+<h1 id="配置支持"><a href="#配置支持" class="headerlink" title="配置支持"></a>配置支持</h1><ul>
+<li><code>Python</code></li>
+<li><code>C++</code></li>
+<li><code>CUDA</code>   (GPU环境)</li>
+<li><code>CUDNN</code> （GPU环境）</li>
+</ul>
+<h1 id="Tensorflow的结构"><a href="#Tensorflow的结构" class="headerlink" title="Tensorflow的结构"></a>Tensorflow的结构</h1><h2 id="数据流图（Graph）"><a href="#数据流图（Graph）" class="headerlink" title="数据流图（Graph）"></a>数据流图（Graph）</h2><p>数据流图是一种描述有向图的数值计算过程产物。图中的节点通常是代表数学运算，但也可以表示数据的输入、输出和读写等操作。图中的边（Edge）表示节点之间的某种关联，负责在节点之间传递各种数据单元，而Tensorflow的基本运算单元是Tensor。Tensorflow的flow也因此得名。</p>
+<p>节点可以被分配到多个设备上运算，也就是所谓的异步并行操作。因为是有向图，所以只有等到先前的节点结束工作时，当前的节点才能够执行相应的操作。</p>
+<h2 id="节点（Ops）"><a href="#节点（Ops）" class="headerlink" title="节点（Ops）"></a>节点（Ops）</h2><p>Tensorflow中的节点也被称为Operation。一个Ops通常使用0个或者以上的Tensors，通过执行某个特定的运算，产生新的Tensors。一个Tensor表示的是一个<strong>多维数组</strong>，例如[batch, height, width, channels]这样的形式，数组中的数多为浮点数。</p>
+<h2 id="边（Edge）"><a href="#边（Edge）" class="headerlink" title="边（Edge）"></a>边（Edge）</h2><p>Tensorflow各节点之间的通道被成为边，也可以理解为流（FLow），作用是在每个节点的计算过程中传输数据Tensor。因为是有向图的关系，边的传输方向也是有自己的规则，因此在Tensorflow的运算过程中往往需要安排好节点和边的关系。</p>
+<h1 id="Tensorflow的常见使用步骤"><a href="#Tensorflow的常见使用步骤" class="headerlink" title="Tensorflow的常见使用步骤"></a>Tensorflow的常见使用步骤</h1><ul>
+<li>将计算流程表示成图的形式</li>
+<li>通过Session来执行图计算</li>
+<li>将数据表示为Tensors</li>
+<li>通过Variable储存模型的状态数值</li>
+<li>使用feeds和fetches来填充数据和抓取数据</li>
+</ul>
+<p>Tensorflow运行中通过Session来执行图中各节点的运算，Session将Ops放置到CPU或者GPU中，然后执行他们。执行完毕后，返回相应的结果（Tensors），在Python中这些Tensors的形式是numpy ndarray的objects。</p>
+<h2 id="创建数据流图"><a href="#创建数据流图" class="headerlink" title="创建数据流图"></a>创建数据流图</h2><p>Tensorflow在使用过程中通常分为<strong>施工阶段</strong> 和 <strong>建设阶段</strong>两部分。在施工阶段我们创建一个神经网络的结构和功能，在建设阶段通过Session来反复执行我们所构建的神经网络。</p>
+<p>和大多数编程语言类似，Tensorflow的Constant是一种没有输入的ops（常量），但是它本身可以作为其他ops的输入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">matrix1 = tf.constant([[<span class="number">3.</span>, <span class="number">3.</span>]])</span><br><span class="line">matrix2 = tf.constant([[<span class="number">2.</span>], [<span class="number">2.</span>]])</span><br><span class="line">product = tf.matmul(matrix1, matrix2)</span><br></pre></td></tr></table></figure>
+<p>这时我们已经在一个Default的Graph里面加入了三个Nodes，两个Constant ops和一个matmul的ops。为了能够得到两个矩阵运算的结果，我们就必须使用<strong>session来启动图</strong>。</p>
+<h2 id="在Session中执行数据流图"><a href="#在Session中执行数据流图" class="headerlink" title="在Session中执行数据流图"></a>在Session中执行数据流图</h2><p>刚才已经完成了施工的阶段，现在要开始建设阶段了，这样才能实作出我们想要的结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.Session()</span><br><span class="line">result = sess.run(product)</span><br><span class="line">print(result)</span><br><span class="line">sess.close()</span><br></pre></td></tr></table></figure>
+<p>用定义式的Session执行需要一个结束的判定，或者我们可以使用with的方式来定义我们的执行过程:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    result = sess.run(product)</span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure>
+<p>Tensorflow这些节点可以被分配到不同的设备上进行计算。如果是GPU，默认会在第一个GPU（id = 0）上执行，如果想在其他的GPU上执行相应的session，需要进行手动配置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="comment"># 也可以用‘/cpu:0’</span></span><br><span class="line">    <span class="keyword">with</span> tf.device(<span class="string">"/gpu:1"</span>):</span><br><span class="line">        matrix1 = tf.constant([[<span class="number">3.</span>, <span class="number">3.</span>]])</span><br><span class="line">        matrix2 = tf.constant([[<span class="number">2.</span>], [<span class="number">2.</span>]])</span><br><span class="line">        product = tf.matmul(matrix1, matrix2)</span><br><span class="line">        print(sess.run(product))</span><br></pre></td></tr></table></figure>
+<p>在一些交互界面（例如Ipython或者cmd）运行tensorflow的时候，我们往往不需要编译全局而用分布式运算的方式。因此我们可以使用InteractiveSession和eval()、Ops_name.run()等方式来进行分布式运算:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line"></span><br><span class="line">a = tf.Variable([<span class="number">1.0</span>, <span class="number">2.0</span>])</span><br><span class="line">a.initializer.run()</span><br><span class="line">b = tf.constant([<span class="number">3.0</span>, <span class="number">3.0</span>])</span><br><span class="line"></span><br><span class="line">sub = tf.subtract(a, b)</span><br><span class="line">print(sub.eval())</span><br><span class="line"></span><br><span class="line">sess.close()</span><br></pre></td></tr></table></figure>
+<h2 id="运算中的数据结构Tensors"><a href="#运算中的数据结构Tensors" class="headerlink" title="运算中的数据结构Tensors"></a>运算中的数据结构Tensors</h2><p>Tensorflow中使用的数据结构不同于其他语言中的结构，而是一种叫作Tensor的结构，它的本质是一个多维的数据集的表示形式，用来在数据流图中的各节点之间传递信息，一个Tensor具有固定的类型和大小（静态型别）。</p>
+<h3 id="变量Variable"><a href="#变量Variable" class="headerlink" title="变量Variable"></a>变量Variable</h3><p>变量在图的执行过程中，保持着自己特有的状态信息，能够为图模型的运作保存变化的数值信息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">state = tf.Variable(<span class="number">0</span>, name = <span class="string">"counter"</span>)</span><br><span class="line">one = tf.constant(<span class="number">1</span>)</span><br><span class="line">new_value = tf.add(state, one)</span><br><span class="line"><span class="comment"># 赋值函数</span></span><br><span class="line">update = tf.assign(state, new_value)</span><br><span class="line"></span><br><span class="line">init_op = tf.initializer_all_variables()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(init_op)</span><br><span class="line">    print(sess.run(state))</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        sess.run(update)</span><br><span class="line">        print(sess.run(state))</span><br></pre></td></tr></table></figure>
+<p>一般我们会将神经网络的参数初始化为一些变量，等到训练的时候再通过Session来对参数进行更新。</p>
+<h2 id="抓取（Fetches）和填充（Feeds）"><a href="#抓取（Fetches）和填充（Feeds）" class="headerlink" title="抓取（Fetches）和填充（Feeds）"></a>抓取（Fetches）和填充（Feeds）</h2><p>我们在使用神经网络的过程中，每一个节点的图往往不是封闭的，也就是说它们需要传入和输出一些东西。而为了抓取ops的输出，我们需要执行Session的run函数，然后通过print的方式抓取它们的参数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">input1 = tf.constant(<span class="number">3.0</span>)</span><br><span class="line">input2 = tf.constant(<span class="number">2.0</span>)</span><br><span class="line">input3 = tf.constant(<span class="number">5.0</span>)</span><br><span class="line">intermed = tf.add(input2, input3)</span><br><span class="line">mul = tf.multiply(input1, intermed)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    result = sess.run(mul)</span><br><span class="line">    print(result)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中的result计算过程中，虽然mul的计算过程需要用到intermed的计算结果，但是我们不需要另外写入sess.run(intermed)。原因是Tensorflow是一个有向图集，因此我们定义后面的图，它就会自动去追溯先前的所有图并且实作它们。</li>
+</ul>
+<p>有的时候我们在计算过程中有些参数我们是在之后<strong>建设</strong>的过程中才会得到的，因此我们在施工的时候就可以先用一个占位符把它的位置保留：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">input1 = tf.placeholder(tf.float32)</span><br><span class="line">input2 = tf.placeholder(tf.float32)</span><br><span class="line">output = tf.multiply(input1, input2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(output, feed_dict = &#123;input1 : [<span class="number">7.</span>], input2: [<span class="number">2.</span>]&#125;))</span><br></pre></td></tr></table></figure>
+<p>或者传入一个numpy array：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">n = <span class="number">5</span></span><br><span class="line">a = tf.placeholder(dtype = tf.float32)</span><br><span class="line">b = tf.placeholder(<span class="string">"float"</span>, [<span class="keyword">None</span>, n])</span><br><span class="line">output = tf.multiply(a, b)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    temp = np.asarray([[<span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>, <span class="number">5.</span>]])</span><br><span class="line">    print(sess.run(output, feed_dict = &#123;a: [<span class="number">2.</span>], b: temp&#125;))</span><br></pre></td></tr></table></figure>
+<h1 id="Tensorflow范例"><a href="#Tensorflow范例" class="headerlink" title="Tensorflow范例"></a>Tensorflow范例</h1><h2 id="拟合曲线的计算"><a href="#拟合曲线的计算" class="headerlink" title="拟合曲线的计算"></a>拟合曲线的计算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x_data = np.random.randn(<span class="number">100</span>).astype(<span class="string">"float32"</span>)</span><br><span class="line">y_data = x_data * <span class="number">0.1</span> + <span class="number">0.3</span></span><br><span class="line"></span><br><span class="line">W = tf.Variable(tf.random_uniform([<span class="number">1</span>], <span class="number">-1.0</span>, <span class="number">1.0</span>))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">1</span>]))</span><br><span class="line">y = W * x_data + b</span><br><span class="line"></span><br><span class="line">loss = tf.reduce_mean(tf.square(y - y_data))</span><br><span class="line">optimizer = tf.train.GradientDescentOptimizer(<span class="number">0.1</span>).minimize(loss)</span><br><span class="line"></span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"></span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">101</span>):</span><br><span class="line">    sess.run(optimizer)</span><br><span class="line">    <span class="keyword">if</span> step % <span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">        print(step, sess.run(W), sess.run(b))</span><br></pre></td></tr></table></figure>
+<h2 id="MNIST手写识别"><a href="#MNIST手写识别" class="headerlink" title="MNIST手写识别"></a>MNIST手写识别</h2><p>利用线性分类：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"><span class="comment"># mnist.train, mnist.test, mnist.validation</span></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot = <span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">batch_size = <span class="number">64</span></span><br><span class="line">train_iter = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># input_size = [batch_size, 28, 28]; output_size = one_hot</span></span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">784</span>])</span><br><span class="line">y = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>, <span class="number">10</span>]))</span><br><span class="line">b = tf.Variable(tf.zeros([<span class="number">10</span>]))</span><br><span class="line">pred = tf.nn.softmax(tf.matmul(x, W) + b)</span><br><span class="line"></span><br><span class="line">loss = -tf.reduce_sum(y * tf.log(pred))</span><br><span class="line">optimizer = tf.train.GradientDescentOptimizer(<span class="number">0.01</span>).minimize(loss)</span><br><span class="line">correct_prediction = tf.equal(tf.argmax(pred, <span class="number">1</span>), tf.argmax(y, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, <span class="string">"float"</span>))</span><br><span class="line"></span><br><span class="line">init = tf.initialize_all_variables()</span><br><span class="line"></span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(init)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(train_iter):</span><br><span class="line">    batch_xs, batch_ys = mnist.train.next_batch(<span class="number">64</span>)</span><br><span class="line">    sess.run(optimizer, feed_dict = &#123;x: batch_xs, y: batch_ys&#125;)</span><br><span class="line">    <span class="keyword">if</span> step % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">        print(sess.run(accuracy, feed_dict = &#123;x: mnist.test.images, y: mnist.test.labels&#125;))</span><br></pre></td></tr></table></figure>
+<p>利用RNN（GRU）神经网络：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST/"</span>, one_hot = <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">n_input = <span class="number">28</span></span><br><span class="line">time_step = <span class="number">28</span></span><br><span class="line">n_hidden = <span class="number">128</span></span><br><span class="line">n_output = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">learning_rate = <span class="number">0.001</span></span><br><span class="line">train_iters = <span class="number">1000</span></span><br><span class="line">batch_size = <span class="number">64</span></span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, time_step, n_input])</span><br><span class="line">y = tf.placeholder(tf.float32, [<span class="keyword">None</span>, n_output])</span><br><span class="line"></span><br><span class="line">W = &#123;</span><br><span class="line">	<span class="string">'hidden'</span> : tf.Variable(tf.random_normal([n_input, n_hidden])),</span><br><span class="line">	<span class="string">'output'</span> : tf.Variable(tf.random_normal([n_hidden, n_output]))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b = &#123;</span><br><span class="line">	<span class="string">'hidden'</span> : tf.Variable(tf.random_normal([n_hidden])),</span><br><span class="line">	<span class="string">'output'</span> : tf.Variable(tf.random_normal([n_output]))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">RNN</span><span class="params">(x, W, b)</span>:</span></span><br><span class="line">	x = tf.transpose(x, [<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>])</span><br><span class="line">	x = tf.reshape(x, [<span class="number">-1</span>, n_input])</span><br><span class="line">	x = tf.matmul(x, W[<span class="string">'hidden'</span>]) + b[<span class="string">'hidden'</span>]</span><br><span class="line">	x = tf.split(x, time_step, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	lstm_cell = tf.nn.rnn_cell.GRUCell(n_hidden)</span><br><span class="line">	outputs, _ = tf.contrib.rnn.static_rnn(lstm_cell, x, dtype = tf.float32)</span><br><span class="line">	<span class="keyword">return</span> tf.matmul(outputs[<span class="number">-1</span>], W[<span class="string">'output'</span>]) + b[<span class="string">'output'</span>]</span><br><span class="line"></span><br><span class="line">pred = RNN(x, W, b)</span><br><span class="line"></span><br><span class="line">loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits = pred, labels = y))</span><br><span class="line">optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(loss)</span><br><span class="line"></span><br><span class="line">corrent_pred = tf.equal(tf.argmax(pred, <span class="number">1</span>), tf.argmax(y, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(corrent_pred, tf.float32))</span><br><span class="line"></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	<span class="keyword">with</span> tf.device(<span class="string">'/cpu:0'</span>):</span><br><span class="line">		sess.run(init)</span><br><span class="line">		<span class="keyword">for</span> step <span class="keyword">in</span> range(train_iters):</span><br><span class="line">			batch_x, batch_y = mnist.train.next_batch(batch_size)</span><br><span class="line">			batch_x = batch_x.reshape(batch_size, time_step, n_input)</span><br><span class="line">			sess.run(optimizer, feed_dict = &#123;x: batch_x, y: batch_y&#125;)</span><br><span class="line">			<span class="keyword">if</span> step % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">				acc = sess.run(accuracy, feed_dict = &#123;x: batch_x, y: batch_y&#125;)</span><br><span class="line">				cost = sess.run(loss, feed_dict = &#123;x: batch_x, y: batch_y&#125;)</span><br><span class="line">				print(<span class="string">"MSG : Epoch &#123;&#125;, Training_accuracy = &#123;:.6f&#125;, Training_loss = &#123;:.5f&#125;"</span>.format((step // <span class="number">100</span>) + <span class="number">1</span>, acc, cost))</span><br><span class="line"></span><br><span class="line">		test_data = mnist.test.images.reshape(<span class="number">-1</span>, time_step, n_input)</span><br><span class="line">		test_labels = mnist.test.labels</span><br><span class="line">		print(<span class="string">"MSG : Testing_accuracy = &#123;:.6f&#125;"</span>.format(sess.run(accuracy, feed_dict = &#123;x: test_data, y: test_labels&#125;)))</span><br></pre></td></tr></table></figure>
+<p>利用CNN神经网络：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">'MNIST/'</span>, one_hot = <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">time_step = <span class="number">28</span></span><br><span class="line">n_input = <span class="number">28</span></span><br><span class="line">n_output = <span class="number">10</span></span><br><span class="line">n_hidden = <span class="number">1024</span></span><br><span class="line">learning_rate = <span class="number">0.001</span></span><br><span class="line">train_iters = <span class="number">20000</span></span><br><span class="line">batch_size = <span class="number">64</span></span><br><span class="line">dropout = <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">strides_size = <span class="number">1</span></span><br><span class="line">kernal_size = <span class="number">2</span></span><br><span class="line">window_size = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">	initial = tf.truncated_normal(shape, stddev = <span class="number">0.1</span>)</span><br><span class="line">	<span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></span><br><span class="line">	initial = tf.constant(<span class="number">0.1</span>, shape = shape)</span><br><span class="line">	<span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv</span><span class="params">(x, W)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> tf.nn.conv2d(x, W, strides = [strides_size] * <span class="number">4</span>, padding = <span class="string">'SAME'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pooling</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> tf.nn.max_pool(x, ksize = [<span class="number">1</span>, window_size, window_size, <span class="number">1</span>], strides = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding = <span class="string">'SAME'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, time_step, n_input])</span><br><span class="line">x_image = tf.reshape(x, [<span class="number">-1</span>, time_step, n_input, <span class="number">1</span>])</span><br><span class="line">y = tf.placeholder(tf.float32, [<span class="keyword">None</span>, n_output])</span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line"></span><br><span class="line"><span class="comment"># conv1 layer</span></span><br><span class="line">W_conv1 = weight_variable([window_size, window_size, <span class="number">1</span>, <span class="number">32</span>])</span><br><span class="line">b_conv1 = bias_variable([<span class="number">32</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># conv2 layer</span></span><br><span class="line">W_conv2 = weight_variable([window_size, window_size, <span class="number">32</span>, <span class="number">64</span>])</span><br><span class="line">b_conv2 = bias_variable([<span class="number">64</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># linear flatten layer</span></span><br><span class="line">W_fc1 = weight_variable([<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, n_hidden])</span><br><span class="line">b_fc1 = bias_variable([n_hidden])</span><br><span class="line"></span><br><span class="line"><span class="comment"># softmax layer</span></span><br><span class="line">W_fc2 = weight_variable([n_hidden, n_output])</span><br><span class="line">b_fc2 = bias_variable([n_output])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">CNN</span><span class="params">(x, W_conv1, b_conv1, W_conv2, b_conv2, W_fc1, b_fc1, W_fc2, b_fc2, keep_prob)</span>:</span></span><br><span class="line">	<span class="comment"># [-1, 28, 28, 1]</span></span><br><span class="line">	h_conv1 = tf.nn.relu(conv(x, W_conv1) + b_conv1)</span><br><span class="line">	h_pool1 = max_pooling(h_conv1)</span><br><span class="line">	h_pool1_drop = tf.nn.dropout(h_pool1, keep_prob)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># [-1, 14, 14, 32]</span></span><br><span class="line">	h_conv2 = tf.nn.relu(conv(h_pool1_drop, W_conv2) + b_conv2)</span><br><span class="line">	h_pool2 = max_pooling(h_conv2)</span><br><span class="line">	h_pool2_drop = tf.nn.dropout(h_pool2, keep_prob)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># [-1, 7, 7, 64]</span></span><br><span class="line">	h_fc1 = tf.reshape(h_pool2_drop, [<span class="number">-1</span>, <span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>])</span><br><span class="line">	h_fc1 = tf.nn.relu(tf.matmul(h_fc1, W_fc1) + b_fc1)</span><br><span class="line">	h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line"></span><br><span class="line">	<span class="comment"># [-1, n_hidden] -&gt; [-1, n_output]</span></span><br><span class="line">	<span class="comment"># return tf.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)</span></span><br><span class="line">	<span class="keyword">return</span> tf.matmul(h_fc1_drop, W_fc2) + b_fc2</span><br><span class="line"></span><br><span class="line">pred = CNN(x_image, W_conv1, b_conv1, W_conv2, b_conv2, W_fc1, b_fc1, W_fc2, b_fc2, keep_prob)</span><br><span class="line"></span><br><span class="line"><span class="comment"># loss = -tf.reduce_sum(y * tf.log(pred))</span></span><br><span class="line">loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits = pred, labels = y))</span><br><span class="line">optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(loss)</span><br><span class="line"></span><br><span class="line">corrent_pred = tf.equal(tf.argmax(pred, <span class="number">1</span>), tf.argmax(y, <span class="number">1</span>))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(corrent_pred, tf.float32))</span><br><span class="line"></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	<span class="keyword">with</span> tf.device(<span class="string">'/gpu:0'</span>):</span><br><span class="line">		sess.run(init)</span><br><span class="line">		<span class="keyword">for</span> step <span class="keyword">in</span> range(train_iters):</span><br><span class="line">			batch_x, batch_y = mnist.train.next_batch(batch_size)</span><br><span class="line">			batch_x = batch_x.reshape(batch_size, time_step, n_input)</span><br><span class="line">			sess.run(optimizer, feed_dict = &#123;x: batch_x, y: batch_y, keep_prob: dropout&#125;)</span><br><span class="line">			<span class="keyword">if</span> step % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">				acc = sess.run(accuracy, feed_dict = &#123;x: batch_x, y: batch_y, keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">				cost = sess.run(loss, feed_dict = &#123;x: batch_x, y: batch_y, keep_prob: <span class="number">1.0</span>&#125;)</span><br><span class="line">				print(<span class="string">"MSG : Epoch &#123;&#125;, Training accuracy = &#123;:.6f&#125;, Training loss = &#123;:.5f&#125;"</span>.format((step // <span class="number">100</span>) + <span class="number">1</span>, acc, cost))</span><br><span class="line"></span><br><span class="line">		test_data = mnist.test.images.reshape(<span class="number">-1</span>, time_step, n_input)</span><br><span class="line">		test_labels = mnist.test.labels</span><br><span class="line">		print(sess.run(accuracy, feed_dict = &#123;x: test_data, y: test_labels, keep_prob: <span class="number">1.0</span>&#125;))</span><br></pre></td></tr></table></figure>
+<p>至此，基本能够掌握Tensorflow在神经网络构建过程中的一些流程细节。</p>
+<p>一些通用小例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">```python=</span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mini_batch</span><span class="params">(arr, batch_size)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">0</span>, len(arr), batch_size):</span><br><span class="line">        <span class="keyword">yield</span> arr[step: step + batch_size]</span><br><span class="line"></span><br><span class="line">x = tf.placeholder(tf.float32)</span><br><span class="line">y = tf.placeholder(tf.float32)</span><br><span class="line"></span><br><span class="line">weights = tf.Variable(tf.random_uniform([<span class="number">1</span>], <span class="number">-1.0</span>, <span class="number">1.0</span>))</span><br><span class="line">bias = tf.Variable(tf.zeros([<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Simple_example</span><span class="params">(x, weights, bias)</span>:</span></span><br><span class="line">    output = tf.multiply(x, weights) + bias</span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">y_pred = Simple_example(x, weights, bias)</span><br><span class="line">loss = tf.reduce_mean(tf.square(y_pred - y))</span><br><span class="line">optimizer = tf.train.GradientDescentOptimizer(<span class="number">0.5</span>).minimize(loss)</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(init)</span><br><span class="line">    <span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line">        x_data = np.random.rand(<span class="number">100</span>).astype(np.float32)</span><br><span class="line">        batch_size = <span class="number">25</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> mini_batch(x_data, batch_size):</span><br><span class="line">            y_data = x_data * <span class="number">0.1</span> + <span class="number">0.3</span></span><br><span class="line">            sess.run(optimizer, feed_dict=&#123;x: x_data, y: y_data&#125;)</span><br><span class="line">        <span class="keyword">if</span> step % <span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">"Epoch: &#123;&#125;, Weights: &#123;&#125;, Biase: &#123;&#125;"</span>.format((step // <span class="number">20</span>) + <span class="number">1</span>, sess.run(weights), sess.run(bias)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_layer</span><span class="params">(inputs, in_size, out_size, activation_function=None)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.name_scope(<span class="string">"layer"</span>):</span><br><span class="line">        <span class="keyword">with</span> tf.name_scope(<span class="string">"weights"</span>):</span><br><span class="line">            Weights = tf.Variable(tf.random_normal([in_size, out_size]), name=<span class="string">"W"</span>)</span><br><span class="line">        <span class="keyword">with</span> tf.name_scope(<span class="string">"biases"</span>):</span><br><span class="line">            biases = tf.Variable(tf.zeros([<span class="number">1</span>, out_size]) + <span class="number">0.1</span>)</span><br><span class="line">        <span class="keyword">with</span> tf.name_scope(<span class="string">"Wx_plus_b"</span>):</span><br><span class="line">            Wx_plus_b = tf.matmul(inputs, Weights) + biases</span><br><span class="line">        <span class="keyword">if</span> activation_function <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            outputs = Wx_plus_b</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            outputs = activation_function(Wx_plus_b)</span><br><span class="line">        <span class="keyword">return</span> outputs</span><br><span class="line"></span><br><span class="line">x_data = np.linspace(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">300</span>).reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">noise = np.random.normal(<span class="number">0</span>, <span class="number">0.05</span>, x_data.shape)</span><br><span class="line">y_data = np.square(x_data) - <span class="number">0.5</span> + noise</span><br><span class="line"></span><br><span class="line"><span class="comment"># name scope for tensorboard</span></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"inputs"</span>):</span><br><span class="line">    xs = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">1</span>], name=<span class="string">'x_input'</span>)</span><br><span class="line">    ys = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">1</span>], name=<span class="string">'y_input'</span>)</span><br><span class="line"></span><br><span class="line">l1 = add_layer(xs, <span class="number">1</span>, <span class="number">10</span>, activation_function=tf.nn.relu)</span><br><span class="line">prediction = add_layer(l1, <span class="number">10</span>, <span class="number">1</span>, activation_function=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"loss"</span>):</span><br><span class="line">    loss = tf.reduce_mean(tf.reduce_sum(tf.square(ys - prediction), reduction_indices=[<span class="number">1</span>]), name=<span class="string">"loss"</span>)</span><br><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"optimizer"</span>):</span><br><span class="line">    train_step = tf.train.GradientDescentOptimizer(<span class="number">0.1</span>).minimize(loss)</span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">ax.scatter(x_data, y_data)</span><br><span class="line">plt.ion()</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    writer = tf.train.SummaryWriter(<span class="string">"logdir/"</span>, sess.graph)</span><br><span class="line">    sess.run(init)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">        sess.run(train_step, feed_dict=&#123;xs: x_data, ys: y_data&#125;)</span><br><span class="line">        <span class="keyword">if</span> i % <span class="number">50</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'Loss: &#123;&#125;'</span>.format(sess.run(loss, feed_dict=&#123;xs: x_data, ys: y_data&#125;)))</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                ax.lines.remove(lines[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">except</span> Exception:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            prediction_value = sess.run(prediction, feed_dict=&#123;xs: x_data&#125;)</span><br><span class="line">            lines = ax.plot(x_data, prediction_value, <span class="string">'r-'</span>, lw=<span class="number">5</span>)</span><br><span class="line">            plt.pause(<span class="number">0.2</span>)</span><br><span class="line">    plt.ioff()</span><br><span class="line">    print(<span class="string">'MSG : Done!'</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<h1 id="KeyWords"><a href="#KeyWords" class="headerlink" title="KeyWords"></a>KeyWords</h1><h6 id="tags-Tensorflow"><a href="#tags-Tensorflow" class="headerlink" title="tags: Tensorflow"></a>tags: <code>Tensorflow</code></h6>  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/Tensorflow/">Tensorflow</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">The 1000th summer ————</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+         
+        
+	
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+	
+	<span class="share-btn">
+	<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/8102/08/02/welcome/" data-hover="Welcome">上一篇</a>      
+            
+        
+      
+        
+        <a href="/2018/08/06/machine-learning-tutorial/" data-hover="Machine-learning-tutorial"> 下一篇</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    
+    <div id="disqus_thread"></div>
+
+    <script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());    
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
+
+	
+</article>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">首页
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">归档
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">标签
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">关于
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            
+         
+      
+</div>        
+    
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+		
+		2018		
+	
+		Ginko
+		<br>
+<!--
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+-->
+
+		</div>			
+	 
+</footer>
+   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
