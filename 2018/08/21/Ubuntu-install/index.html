@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  U盘安装Ubuntu及必備軟件指令安裝 |   I-MAY-FALL </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		U盘安装Ubuntu及必備軟件指令安裝
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		Aug 21, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			3059
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<p>Ubuntu 每年发布两个版本，目前最新正式版版本也升到了 16.04。Ubuntu 16.04 开发代号为“Xenial Xerus”，为第六个长期支持（LTS）版本，其主要特色是引入了新的 snap 包格式和 LXD 纯容器 hypervisor。<br>Ubuntu 16.04 LTS正式发布下载，长达5年技术支持  <a href="https://www.ubuntu.com/download/desktop" target="_blank" rel="noopener">https://www.ubuntu.com/download/desktop</a></p>
+<blockquote>
+<p>Ubuntu 16.04 的其他特点包括：</p>
+<ul>
+<li>支持 IBM LinuxONE 及 z Systems 的 s390x 架构</li>
+<li>引入新的 Ubuntu MATE 社区版本</li>
+<li>Linux 内核更新到 4.4.6，包含 ZFS on Linux</li>
+<li>桌面版本的 GTK、Qt 均已升级至最新版本，包含 Firefox 45、Chromium 48、LibreOffice 5.1、Python 3.5 等</li>
+<li>服务器版本包含 OpenStack Mitaka、Juju 2.0、LXD 2.0、NGINX 1.9.15、Docker 1.10、PHP 7.0、MySQL 5.7 等</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="1-下载Universal-USB-Installer"><a href="#1-下载Universal-USB-Installer" class="headerlink" title="1. 下载Universal USB Installer"></a>1. 下载Universal USB Installer</h3><ul>
+<li>在Setp 1选择Ubuntu，我选择的是64位的。</li>
+<li>在Setp 2选择 ubuntu-16.04-desktop-amd64.iso文件</li>
+<li>在Setp 3选择 U盘</li>
+</ul>
+<h3 id="2-BIOS启动U盘"><a href="#2-BIOS启动U盘" class="headerlink" title="2. BIOS启动U盘"></a>2. BIOS启动U盘</h3><ul>
+<li>选择第一选项 Try Ubuntu without installing 或 第二选项 Install Ubuntu 直接安装。</li>
+<li>点击桌面上的 Install Ubuntu 16.04 LTS 图标开始正式安装。</li>
+<li>选择语言：中文（简体）</li>
+<li>我选择安装时暂时不更新Ubuntu系统。</li>
+<li>如果是Windows与Linux双系统安装，请选择其他选项，切记。您可以自己创建、调整分区，或者为 Ubuntu 选择多个分区。</li>
+<li>这里选择安装在 sda9，使用ext4格式。 </li>
+<li>点击继续 及 现在安装。 </li>
+</ul>
+<h3 id="3-分区"><a href="#3-分区" class="headerlink" title="3. 分区"></a>3. 分区</h3><ul>
+<li>点击“创建新分区表”</li>
+<li>继续</li>
+<li>选择产生的空闲分区</li>
+<li>点击的“+”创建4个主要的基础分区</li>
+<li>创建/分区：</li>
+<li>＞5G     主分区     空间起始位置     Ext4日志文件系统     /</li>
+<li>创建swap分区：</li>
+<li>2048MB     逻辑分区         空间起始位置     交换空间</li>
+<li>创建boot分区：</li>
+<li>200MB     逻辑分区    空间起始位置     Ext4日志文件系统    /boot</li>
+<li>创建home分区:</li>
+<li><p>剩余的空间     逻辑分区    空间起始位置     Ext4日志文件系统    /home</p>
+</li>
+<li><p>还可创建自己的其他分区如/123分区 只要设置为逻辑分区、空间起始位置、Ext4日志文件系统</p>
+</li>
+<li><p>修改“安装启动引导器的设备”</p>
+</li>
+<li>选择/boot分区（/dev/sda6）</li>
+<li>点击“现在安装”</li>
+</ul>
+<h3 id="4-重启"><a href="#4-重启" class="headerlink" title="4. 重启"></a>4. 重启</h3><ul>
+<li>重启时出现please remove installation media and close the tray(if any)then press Enter.</li>
+<li>这个意思是说：请拨出U盘，并退出这个安装界面，然后按回车</li>
+<li>造成不能进系统的原因有二个：第一个原因：就是硬盘的第一启动项改变了，不是硬盘启动，所以无法引导系统</li>
+<li>一般都是第一个原因</li>
+<li>第二个原因：造成你这个现象的主要原因是硬盘的主引导记录（MBR）出现错误或者损坏，所以你就要从重建主引导记录（MBR）入手</li>
+</ul>
+<h3 id="5-Ubuntu-分区推荐方案"><a href="#5-Ubuntu-分区推荐方案" class="headerlink" title="5. Ubuntu 分区推荐方案"></a>5. Ubuntu 分区推荐方案</h3><p>要了解分区方案，先从 Linux 系统的目录结构说起。使用 Windows 系统的用户都知道，Windows 系统先有分区的存在，然后在不同的分区下创建文件目录结构。于是我们看到诸如 C:\Windows D:\Downloads 之类目录，也就是说每一个目录首先是存在于某个分区的。Linux 系统则相反，它首先确定有目录的存在，例如：/， /usr， /media/usb，/media/cdrom， /disk 然后才确定这个目录上挂载的是哪个分区（甚至挂载的可能是CDROM， USB等外设以及ISO光盘镜像文件：类似 Windows 下虚拟光驱的作用）。访问某个目录，实质上就相当于访问挂载在这个目录上的分区，外设或者光盘镜像文件。我们在 上一篇 博客中提到过一个系统存储重要数据的目录： /home 目录， 在通常的最佳实践中，可以把这个 home 目录作为一个单独的挂载点，挂载一个独立分区。这样做有几个好处：<br>系统分区如果损坏，幷不影响到 /home 分区所在的数据。这些数据通常非常重要，包括有你常用的软件，重要的文档以及各类软件的配置信息，反过来我们也鼓励把重要的数据存放在 /home 目录下，使得他们保存在系统分区以外的分区，避免因为系统的问题受损。</p>
+<p>在重装系统，或者升级系统以后，/home 分区的数据可以得到保留，最大程度的避免了软件安装和重新配置的耗时工作。</p>
+<p>在日常备份的工作中可以选择只备份 /home 分区所在的数据，避免做全盘的备份。</p>
+<p>我自己就曾经因为在两年前安装Ubuntu 10.04的时候只分了一个分区，把 /home 目录下的数据和系统文件存储在了同一个分区下，导致在安装Ubuntu 12.04的时候，在没有第二个分区和第二台电脑用来备份/home目录数据的情况下，忍痛将整个系统连同/home目录里的数据全部格式化，损失惨重， 教训深刻。</p>
+<p>所以一般来说一个 Ubuntu 的系统在安装之初应该有三个分区，他们分别是挂载于根目录： /, home目录： /home 的两个分区以及 swap 分区。swap分区是指虚拟内存的交换区，一般设置为实际内存容量的两倍大小即可。<br>假设你有一台500G硬盘，2G内存的PC，那么比较好的分区分配方案是：根目录所在分区分配50G左右， swap分区分配4G，剩余空间全部留给 /home 所在分区即可。</p>
+<hr>
+<p><img src="https://i.imgur.com/ncpMZUb.jpg" alt=""></p>
+<hr>
+<h2 id="ubuntu安装指令"><a href="#ubuntu安装指令" class="headerlink" title="ubuntu安装指令"></a>ubuntu安装指令</h2><blockquote>
+<p>ubuntu安装指令</p>
+</blockquote>
+<ol>
+<li><p>安裝 Google Chrome</p>
+<p> 下載</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
+<p> 安裝</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i google-chrome-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
+<p> 设置用户信息</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -f</span><br></pre></td></tr></table></figure>
+<p> 若上面還不能解決，就執行下面的指令，讓安裝系統恢復可運作的狀態</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove chrome-chrome-stable</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 PyCharm<br> 通过第三方源安装PyCharm，好处是升级方便。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:mystic-mirage/pycharm</span><br></pre></td></tr></table></figure>
+<p> 安装收费的专业版：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install pycharm</span><br></pre></td></tr></table></figure>
+<p> 安装免费的社区版：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install pycharm-community</span><br></pre></td></tr></table></figure>
+<p> 卸载：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt remove pycharm pycharm-community &amp;&amp; sudo apt autoremove</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装輸入法<br> <a href="https://blog.csdn.net/ljheee/article/details/52966456" target="_blank" rel="noopener">https://blog.csdn.net/ljheee/article/details/52966456</a></p>
+</li>
+<li>安装 GPU<br> <a href="http://www.52nlp.cn/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEubuntu-1080ti-cuda-cudnn" target="_blank" rel="noopener">http://www.52nlp.cn/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AEubuntu-1080ti-cuda-cudnn</a></li>
+</ol>
+<hr>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/tools/">tools</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">The 1000th summer ————</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+         
+        
+	
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+	
+	<span class="share-btn">
+	<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/2018/08/21/jupyter-shortcuts/" data-hover="Jupyter-shortcuts">Prev</a>      
+            
+        
+      
+        
+        <a href="/2018/08/06/introduction-tensorflow/" data-hover="Tensorflow入门"> Next</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    
+    <div id="disqus_thread"></div>
+
+    <script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());    
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
+
+	
+</article>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>        
+    
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+		
+		2018		
+	
+		Ginko
+		<br>
+<!--
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+-->
+
+		</div>			
+	 
+</footer>
+   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   
   
-  <title>  Welcome |   I-MAY-FALL </title>
+  <title>  Jupyter-Shortcuts |   I-MAY-FALL </title>
 
  
   
@@ -14,8 +14,6 @@
 
 
   <link rel="stylesheet" href="/nayo.min.css"> 
-<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
-<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
 </head>  
   <body>   
     
@@ -73,20 +71,20 @@
 	<div class="post-header">
 
 	<p class="post-title">	
-		Welcome
+		Jupyter-shortcuts
 	</p>
 			
 
 	<div class="meta-info">	
 	<span>
-		Aug 02, 8102
+		Aug 21, 2018
 	</span>
 
 	
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			375
+			1543
 		</span>
 	
 </div>
@@ -99,32 +97,190 @@
 		
 
 			
-					
-			<script>
-				console.error("Error: [hexo-tag-aplayer] Specified asset file not found (images/cat.jpg)");
-			</script>
-
-        <div id="aplayer-QNajOHzf" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-QNajOHzf"),
-            narrow: false,
-            autoplay: true,
-            showlrc: false,
-            music: {
-              title: "Shiver",
-              author: "Lucy Rose",
-              url: "musics/shiver.mp3",
-              pic: "",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script>
+					<h2 id="命令模式Command-Mode"><a href="#命令模式Command-Mode" class="headerlink" title="命令模式Command Mode"></a>命令模式Command Mode</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enter</td>
+<td>进入当前块的编辑模式</td>
+<td>X</td>
+<td>剪切选中的代码块</td>
+</tr>
+<tr>
+<td>Shift+Enter</td>
+<td>运行当前块并选中下一块</td>
+<td>C</td>
+<td>复制选中的代码块</td>
+</tr>
+<tr>
+<td>Ctrl+Enter</td>
+<td>运行当前块</td>
+<td>Shift+V</td>
+<td>在当前块上方粘贴</td>
+</tr>
+<tr>
+<td>Alt+Enter</td>
+<td>运行当前块并在下方插入新块</td>
+<td>V</td>
+<td>在当前块下方粘贴</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>切换到代码状态</td>
+<td>Z</td>
+<td>撤销删除操作</td>
+</tr>
+<tr>
+<td>M</td>
+<td>切换到MarkDown状态</td>
+<td>D,D</td>
+<td>删除选中的代码块</td>
+</tr>
+<tr>
+<td>R</td>
+<td>切换到Raw NBConvert</td>
+<td>Shift+M</td>
+<td>将当前块与下一块合并</td>
+</tr>
+<tr>
+<td>数字键1到6</td>
+<td>将当前块第一行变为MarkDown的n级标题</td>
+<td>S / Ctrl+S</td>
+<td>保存并设置检查点</td>
+</tr>
+<tr>
+<td>↑ / K</td>
+<td>选择上一个代码块</td>
+<td>L</td>
+<td>显示/隐藏当前块的代码行号</td>
+</tr>
+<tr>
+<td>↓ / J</td>
+<td>选择下一个代码块</td>
+<td>O</td>
+<td>显示/隐藏当前块的输出内容</td>
+</tr>
+<tr>
+<td>A</td>
+<td>在当前块上方插入新代码块</td>
+<td>Shift+O</td>
+<td>显示/隐藏当前块的输出内容的滚动条</td>
+</tr>
+<tr>
+<td>B</td>
+<td>在当前块下方插入新代码块</td>
+<td>Esc / Q</td>
+<td>关闭弹窗</td>
+</tr>
+<tr>
+<td>H</td>
+<td>展示快捷键帮助</td>
+<td>I,I</td>
+<td><strong>打断</strong>kernal运行</td>
+</tr>
+<tr>
+<td>Space</td>
+<td>滚动向下</td>
+<td>O,O</td>
+<td><strong>重启</strong>kernal</td>
+</tr>
+<tr>
+<td>Shift+Space</td>
+<td>滚动向上</td>
+<td>Shift+(↑/↓)</td>
+<td>选中多个代码块</td>
+</tr>
+</tbody>
+</table>
 <a id="more"></a>
+<h2 id="编辑模式Edit-Mode"><a href="#编辑模式Edit-Mode" class="headerlink" title="编辑模式Edit Mode"></a>编辑模式Edit Mode</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tab</td>
+<td>代码补全/缩进</td>
+<td>Ctrl+→</td>
+<td>光标右移一个词</td>
+</tr>
+<tr>
+<td>Shift+Tab</td>
+<td>工具提示/反缩进</td>
+<td>Ctrl+Backspace</td>
+<td>删除前一个词</td>
+</tr>
+<tr>
+<td>Ctrl+[</td>
+<td>缩进</td>
+<td>Ctrl+Delete</td>
+<td>删除后一个词</td>
+</tr>
+<tr>
+<td>Ctrl+]</td>
+<td>反缩进</td>
+<td>Ctrl+M / Esc</td>
+<td>进入命令模式</td>
+</tr>
+<tr>
+<td>Ctrl+A</td>
+<td>全选</td>
+<td>Ctrl+Shift+P</td>
+<td>打开命令选择板</td>
+</tr>
+<tr>
+<td>Ctrl+Z</td>
+<td>撤销</td>
+<td>Shift+Enter</td>
+<td>运行当前块并选中下一块</td>
+</tr>
+<tr>
+<td>Ctrl+Y / Ctrl+Shift+Z</td>
+<td>重复</td>
+<td>Ctrl+Enter</td>
+<td>运行当前块</td>
+</tr>
+<tr>
+<td>Ctrl+Home</td>
+<td>移动光标到块首</td>
+<td>Alt+Enter</td>
+<td>运行当前块并在下方插入新块</td>
+</tr>
+<tr>
+<td>Ctrl+End</td>
+<td>移动光标到块尾</td>
+<td>Ctrl+Shift+-</td>
+<td>按光标位置分割当前块</td>
+</tr>
+<tr>
+<td>Ctrl+←</td>
+<td>光标左移一个词</td>
+<td>Ctrl+S</td>
+<td>保存并设置检查点</td>
+</tr>
+</tbody>
+</table>
+<p>在运行单元格时，你可能经常看到它们的边框变成了蓝色，而在编辑的时候它是绿色的。总是有一个“活动”单元格突出显示其当前模式，绿色表示“编辑模式”，蓝色表示“命令模式”。<br>到目前为止，我们已经看到了如何使用 Ctrl + Enter 来运行单元格，但是还有很多。键盘快捷键是 Jupyter 环境中非常流行的一个方面，因为它们促进了快速的基于单元格的工作流。许多这些都是在命令模式下可以在活动单元上执行的操作。<br>下面，你会发现一些 Jupyter 的键盘快捷键列表。你可能不会马上熟悉它们，但是这份清单应该让你对这些快捷键有了了解。  </p>
+<p>在编辑和命令模式之间切换，分别使用 Esc 和 Enter。<br>在命令行模式下：  </p>
+<p>用 Up 和 Down 键向上和向下滚动你的单元格。<br>按 A 或 B 在活动单元上方或下方插入一个新单元。<br>M 将会将活动单元格转换为 Markdown 单元格。<br>Y 将激活的单元格设置为一个代码单元格。<br>D + D(按两次 D)将删除活动单元格。<br>Z将撤销单元格删除。  </p>
+<ul>
+<li>按住 Shift，同时按 Up 或 Down ，一次选择多个单元格。  </li>
+</ul>
+<p>选择了 multple，Shift + M 将合并你的选择。  </p>
+<p>Ctrl + Shift + -，在编辑模式下，将在光标处拆分活动单元格。<br>你也可以在你的单元格的左边用 Shift + Click 来选择它们。  </p>
+<p>你可以在自己的 notebook 上试试这些。一旦你有了尝试，创建一个新的 Markdown 单元，我们将学习如何在我们的 notebook 中格式化文本。  </p>
   	
 					
 	  </div>     
@@ -134,6 +290,9 @@
 <div class="post-meta">
       	
 
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/tools/">tools</a>    
       	
 </div>
 
@@ -179,11 +338,14 @@
 
       </div>  
     <nav class="pf-paginator">
-           
+      
+         
+          <a href="/2018/08/21/gensim/" data-hover="Gensim入门">Prev</a>      
+            
         
       
         
-        <a href="/2018/08/21/gensim/" data-hover="Gensim入门"> Next</a>
+        <a href="/2018/08/21/Ubuntu-install/" data-hover="U盘安装Ubuntu及必備軟件指令安裝"> Next</a>
             
   </nav>   
   </div>
