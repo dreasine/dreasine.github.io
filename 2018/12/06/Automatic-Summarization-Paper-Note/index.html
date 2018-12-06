@@ -1,0 +1,629 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  Automatic Summarization Paper Note |   I-MAY-FALL </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		Automatic Summarization Paper Note
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		Dec 06, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			15933
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<blockquote>
+<p>自动文本摘要生成是自然语言处理领域的一个經典的研究課題，主要任務是將較長的文本在盡可能保留原意的基礎上生成一個較短的版本（在文本長度和文本信息中保持平衡）。在近兩年較多採用深度學習的方法。自動文本摘要的技術能夠幫助人們快速的瀏覽和提取有用的信息，在互聯網信息爆炸的今天有着广泛的应用前景。在此記錄近兩年有關自動摘要的paper，不定時更新。</p>
+</blockquote>
+<p><img src="https://i.imgur.com/o0K1skB.jpg" alt=""></p>
+<a id="more"></a>
+<h1 id="Automatic-Summarization-Paper-Note"><a href="#Automatic-Summarization-Paper-Note" class="headerlink" title="Automatic Summarization Paper Note"></a>Automatic Summarization Paper Note</h1><h2 id="Sentence-summarization"><a href="#Sentence-summarization" class="headerlink" title="Sentence summarization"></a>Sentence summarization</h2><h3 id="1-A-Neural-Attention-Model-for-Abstractive-Sentence-Summarization"><a href="#1-A-Neural-Attention-Model-for-Abstractive-Sentence-Summarization" class="headerlink" title="1. A Neural Attention Model for Abstractive Sentence Summarization"></a>1. A Neural Attention Model for Abstractive Sentence Summarization</h3><p>被引用次数：601<br>Alexander M. Rush et al., Facebook AI Research/Harvard<br>EMNLP2015</p>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>seq2seq模型在2014年提出，這篇論文是將seq2seq模型應用在abstractive summarization任務上比較早期的論文。同組的人還發表了一篇NAACL2016（Sumit Chopra, Facebook AI Research_Abstractive sentence summarization with attentive recurrent neural networks）（作者都差不多），在這篇的基礎上做了更多的改進，效果也更好。這兩篇都是在abstractive summarization任務上使用seq2seq模型的經典baseline。</p>
+<p><strong>Objective function:</strong> negative log likelihood<br><strong>Optimization:</strong> mini-batch SGD</p>
+<h4 id="3-encoder"><a href="#3-encoder" class="headerlink" title="3 encoder:"></a>3 encoder:</h4><ol>
+<li>bag-of-words encoder</li>
+<li>Conv encoder: 參考TextCNN，沒有做過多的其他改動</li>
+<li>Attention-based encoder:<br>x: 原始文本<br>y_c: 上下文單詞（已經輸出的摘要內容）</li>
+</ol>
+<h4 id="性能-ABS"><a href="#性能-ABS" class="headerlink" title="性能(ABS)"></a>性能(ABS)</h4><p>output use Beam Search algorithm.<br>本模型效果並不讓人滿意.</p>
+<table>
+<thead>
+<tr>
+<th>Models</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DUC-2004</td>
+<td>26.55</td>
+<td>7.06</td>
+<td>22.05</td>
+</tr>
+<tr>
+<td>Gigaword</td>
+<td>30.88</td>
+<td>12.65</td>
+<td>28.34</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-Abstractive-Sentence-Summarization-with-Attentive-Recurrent-Neural-Networks"><a href="#2-Abstractive-Sentence-Summarization-with-Attentive-Recurrent-Neural-Networks" class="headerlink" title="2. Abstractive Sentence Summarization with Attentive Recurrent Neural Networks"></a>2. Abstractive Sentence Summarization with Attentive Recurrent Neural Networks</h3><p>Sumit Chopra et al., Facebook AI Research<br>NAACL2016</p>
+<h4 id="encoder-使用了基於註意力的CNN"><a href="#encoder-使用了基於註意力的CNN" class="headerlink" title="encoder: 使用了基於註意力的CNN"></a>encoder: 使用了基於註意力的CNN</h4><p>先將詞的原始embedding(x_i)和<strong>位置embedding(l_i)</strong>（可訓練）相加，作為詞的full embedding(a_i).<br>full embedding(a_i) = embedding(x_i)+embedding(l_i)<br>convolution:size=5  -&gt; aggregate embedding(z_i)</p>
+<h4 id="decoder-RNN-LSTM"><a href="#decoder-RNN-LSTM" class="headerlink" title="decoder: RNN/LSTM"></a>decoder: RNN/LSTM</h4><p>模型encoder的輸入每次都是一個完整地句子，decoder每次要輸出的時候，會將h_t-1給encoder，encoder根據句子和h_t-1計算attention生成c_t給decoder，然後decoder根據(y_t-1, h_t-1, c_t)計算要輸出的單詞。encoder還要更新position embedding(l_i)</p>
+<h4 id="性能-RAS-Elman-k-10-k-means-beam-size"><a href="#性能-RAS-Elman-k-10-k-means-beam-size" class="headerlink" title="性能(RAS-Elman, k=10, k means beam size):"></a>性能(RAS-Elman, k=10, k means beam size):</h4><table>
+<thead>
+<tr>
+<th>Models</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DUC-2004</td>
+<td>28.97</td>
+<td>8.26</td>
+<td>24.06</td>
+</tr>
+<tr>
+<td>Gigaword</td>
+<td>33.78</td>
+<td>15.9</td>
+<td>31.15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-Selective-Encoding-for-Abstractive-Sentence-Summarization"><a href="#3-Selective-Encoding-for-Abstractive-Sentence-Summarization" class="headerlink" title="3. Selective Encoding for Abstractive Sentence Summarization"></a>3. Selective Encoding for Abstractive Sentence Summarization</h3><p>Qingyu Zhou, Nan Yang, Furu Wei, Ming Zhou; MSRA&amp;HIT<br>ACL2017</p>
+<p><strong>Encoder</strong><br>BiGRU: 為每個詞x_i生成一個2d維的hidden state(h_i)<br>Selective Mechanism<br>將詞的h_i與句子的s拼接到一起，MLP裏生成輸出h‘_i。<br>s=[h←1, h→n]: h←1表示從右到左讀取了整個句子, h→n表示從左到右讀取了整個句子。<br><strong>Decoder</strong><br>st = GRU(s_t-1, c_t-1, y_t-1)<br>r= maxout(c_t，s_t, y_t-1)(k=2)</p>
+<h4 id="性能-all-are-state-of-the-art"><a href="#性能-all-are-state-of-the-art" class="headerlink" title="性能: all are state-of-the-art"></a>性能: all are state-of-the-art</h4><table>
+<thead>
+<tr>
+<th>Models</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DUC-2004</td>
+<td>29.21</td>
+<td>9.56</td>
+<td>25.51</td>
+</tr>
+<tr>
+<td>Gigaword</td>
+<td>36.15</td>
+<td>17.54</td>
+<td>33.63</td>
+</tr>
+</tbody>
+</table>
+<p>Gigaword(ours): Rouge-1:46.86/Rouge-2:24.58/Rouge-L:43.53(so high)</p>
+<h2 id="Text-summarization-multi-sentence-summaries"><a href="#Text-summarization-multi-sentence-summaries" class="headerlink" title="Text summarization(multi-sentence summaries)"></a>Text summarization(multi-sentence summaries)</h2><h3 id="1-Abstractive-Text-Summarization-Using-Sequence-to-Sequence-RNNs-and-Beyond"><a href="#1-Abstractive-Text-Summarization-Using-Sequence-to-Sequence-RNNs-and-Beyond" class="headerlink" title="1. Abstractive Text Summarization Using Sequence-to-Sequence RNNs and Beyond"></a>1. Abstractive Text Summarization Using Sequence-to-Sequence RNNs and Beyond</h3><p>Ramesh Nallapati, Bowen Zhou, Cicero dos Santos; IBM<br>CoNLL2016</p>
+<h4 id="Many-tricks"><a href="#Many-tricks" class="headerlink" title="Many tricks:"></a>Many tricks:</h4><p><strong>LVT/sampled softmax:</strong> seq2seq輸出的時候使用了softmax，計算V中的每個詞的值並歸一化，這一步非常耗時。sampled softmax對每個句子/文章單獨采樣了一個V‘，只對V‘中的詞計算softmax並歸一化，大幅減少了訓練時的計算量。不過在測試的時候仍然需要計算所有詞。<br><strong>Feature-rich encoder:</strong> 將POS、NER、TF、IDF等文本特征拼接在word embedding後面作為encoder的輸入。<br><strong>Switching Generator-Pointer:</strong> 這個操作主要用於解決OOV和UNK問題，當碰到OOV時，g_i置為0，模型會從輸入中尋找一個詞作為輸出和下一時間片的輸入。測試時模型會自動決定采用decoder的輸出還是從輸入中挑選一個詞作為輸出。<br><strong>Hierarchical Attention:</strong> 模型會對每個句子計算attention，並整合句子的權重計算每個詞的權重。句子的的隱層狀態後面還會拼接position embedding。<br>Hierarchical Attention效果沒有預期的好，作者還使用了Temporary Attention(Sankaran et al., 2016, Temporal Attention Model for Neural Machine Translation)，效果大幅提升。</p>
+<p><strong>DataSet:</strong> 本文提出了CNN/Daily Mail Corpus，每個摘要包含了多個句子（之前的DUC2004和Gigaword每個摘要只包含1個句子），後續被大量用於評測。</p>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><table>
+<thead>
+<tr>
+<th>Models</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN/Daily</td>
+<td>35.46</td>
+<td>13.30</td>
+<td>32.65</td>
+</tr>
+<tr>
+<td>Gigaword</td>
+<td>35.30</td>
+<td>16.64</td>
+<td>32.62</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-Incorporating-copying-mechanism-in-sequence-to-sequence-learning"><a href="#2-Incorporating-copying-mechanism-in-sequence-to-sequence-learning" class="headerlink" title="2. Incorporating copying mechanism in sequence-to-sequence learning"></a>2. Incorporating copying mechanism in sequence-to-sequence learning</h3><p>被引用次数：208<br>Jiatao GU et al.<br>ACL2016<br>using LCSTS Dataset<br>Models<br>整體:<br><img src="https://i.imgur.com/7gcz1PM.png" alt=""><br>這篇論文則將概率相加再softmax得到輸出。對於V中的每個詞，計算generation模式的概率，對於X中的每個詞，計算copy模式的概率，最後進行歸一化，得到輸出。<br><img src="https://i.imgur.com/kOR93VD.png" alt=""><br>Decoder State Update: s_t=f(s_t-1, y_t-1, c_t)這個和常規的是一樣的，但是這裏的y_t-1=[e(y_t-1), C(y_t-1)]T，e就是y_t-1的embedding，C是輸入單詞的權重，對跟y_t-1相同的詞進行計算，不相同的詞直接置0，然後歸一化。<br>Code: <a href="https://github.com/MultiPath/CopyNet" target="_blank" rel="noopener">https://github.com/MultiPath/CopyNet</a><br>性能:<br>| Models | Rouge-1 | Rouge-2 | Rouge-L |<br>| ——– | ——– | ——– | —— |<br>| LCSTS(Word Level)     | 35.0     | 22.3     | 32.0 |</p>
+<h3 id="3-Get-To-The-Point-Summarization-with-Pointer-Generator-Networks"><a href="#3-Get-To-The-Point-Summarization-with-Pointer-Generator-Networks" class="headerlink" title="3. Get To The Point: Summarization with Pointer-Generator Networks"></a>3. Get To The Point: Summarization with Pointer-Generator Networks</h3><p>ACL17<br><img src="https://i.imgur.com/cot38a2.png" alt=""></p>
+<p>相比於上一個將概率相加的方式，這篇paper使用一個開關控制copy的方式。上图展示了 decoder 的第三个 step，预测 Germany beat 后面一个单词，像之前一样，我们会计算一个 attention distribution 和 vocabulary distribution，不过同时，也会计算一个产生概率 pgen，是 0-1 间的一个值，表示从 vocabulary 中产生一个单词的概率，相应的 1−pgen 就是从输入中 copy 一个单词的概率。</p>
+<p><strong>Coverage</strong><br>用 attention distribution 来记录哪些部分已经总结过了，来惩罚再次加入计算的部分。decoder 的每个时刻，有一个 coverage vector ct 来将记录之前所有时刻 attention 的总和。</p>
+<h4 id="性能-1"><a href="#性能-1" class="headerlink" title="性能"></a>性能</h4><table>
+<thead>
+<tr>
+<th>pointer-generator</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN/Daily</td>
+<td>36.44</td>
+<td>15.66</td>
+<td>33.42</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>pointer-generator + converage</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN/Daily</td>
+<td>39.53</td>
+<td>17.28</td>
+<td>36.38</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-Sequential-Copying-Networks"><a href="#4-Sequential-Copying-Networks" class="headerlink" title="4. Sequential Copying Networks"></a>4. Sequential Copying Networks</h3><p>Qingyu Zhouy, Nan Yang, Furu Wei, Ming Zhou; HIT &amp; MSRA<br>AAAI2018<br>原先的CopyNet每次copy一個詞，這篇文章一次可以copy多個詞（詞組），通過給每個copy的詞打標簽來判斷是否結束。</p>
+<h4 id="性能-2"><a href="#性能-2" class="headerlink" title="性能"></a>性能</h4><table>
+<thead>
+<tr>
+<th>Models</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gigaword</td>
+<td>35.93</td>
+<td>17.51</td>
+<td>33.35</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-A-Deep-Reinforced-Model-for-Abstractive-Summarization"><a href="#5-A-Deep-Reinforced-Model-for-Abstractive-Summarization" class="headerlink" title="5. A Deep Reinforced Model for Abstractive Summarization"></a>5. A Deep Reinforced Model for Abstractive Summarization</h3><p>Romain Paulus, Caiming Xiong &amp; Richard Socher; Salesforce Research<br>ICLR2018<br>Reinforcement Learning</p>
+<h4 id="Models-Attention-Mechanism"><a href="#Models-Attention-Mechanism" class="headerlink" title="Models(Attention Mechanism)"></a>Models(Attention Mechanism)</h4><ol>
+<li>Intra-Temporal Attention</li>
+<li>Intra-Decoder Attention<br>普通的Attention都是計算當前decoder狀態與不同encoder之間的權重。然而，已經由decoder輸出的詞對decoder輸出下一個詞同樣是有影響的，例如可以避免輸出陷入循環。因此這篇文章設計了一個decoder當前隱層狀態與decoder歷史隱層狀態的attention機制。先計算當前h_t與歷史每個h_t‘的得分，然後歸一化得到權重，最後加權求和得到decoder的上下文輸出c_t_d。</li>
+<li>Generation/Pointer<h4 id="Models-Hybrid-Learning-Objective"><a href="#Models-Hybrid-Learning-Objective" class="headerlink" title="Models(Hybrid Learning Objective)"></a>Models(Hybrid Learning Objective)</h4></li>
+<li>Teacher Forcing算法。通常的目標函數都是NLL，然而即便達到最優，在使用離散評價方式（ROUGE, CIDEr, BLEU）進行評價的時候，往往得不到最好的效果，主要原因有倆：1. 訓練的時候使用正確的單詞作為下一時間片的輸入，每一步的錯誤不會累積，但是測試的時候每一步的錯誤會累積到下一時間片。2. 輸出文本的詞序是靈活的，離散的評價方式也考慮到了這種靈活性，但是NLL沒有。</li>
+<li>Policy Learning: 強化學習的兩種常用算法（Policy Gradient, Q-Learning）之一。本文使用self-critical policy gradient training algorithm (Rennie et al., 2016)。</li>
+</ol>
+<h4 id="性能-3"><a href="#性能-3" class="headerlink" title="性能"></a>性能</h4><table>
+<thead>
+<tr>
+<th>Mail(only ML)</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN/Daily</td>
+<td>38.30</td>
+<td>14.81</td>
+<td>35.49</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Mail(only RL)</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN/Daily</td>
+<td>41.16</td>
+<td>15.75</td>
+<td>39.08</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Mail(ML+RL</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN/Daily</td>
+<td>39.87</td>
+<td>15.82</td>
+<td>36.90</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://i.imgur.com/izWV8F1.png" alt=""></p>
+<h3 id="6-Fast-Abstractive-Summarization-with-Reinforce-Selected-Sentence-Rewriting"><a href="#6-Fast-Abstractive-Summarization-with-Reinforce-Selected-Sentence-Rewriting" class="headerlink" title="6.Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting"></a>6.Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting</h3><p>Yen-Chun Chen, Mohit Bansal; UNC Chapel Hill<br>ACL2018<br>Extractor + Abstractor + Reinforcement Learning</p>
+<h4 id="decoder-CopyNet-like"><a href="#decoder-CopyNet-like" class="headerlink" title="decoder: CopyNet-like"></a>decoder: CopyNet-like</h4><p>快: parallel decoding<br>強化學習僅調整Extractor參數，不調整Abstractor參數，避免生成的句子可讀性差，同樣使用Policy Gradient學習算法。</p>
+<table>
+<thead>
+<tr>
+<th>Models</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN/Daily</td>
+<td>40.88</td>
+<td>17.80</td>
+<td>38.54</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-A-Reinforced-Topic-Aware-Convolutional-Sequence-to-Sequence-Model-for-Abstractive-Text-Summarization"><a href="#7-A-Reinforced-Topic-Aware-Convolutional-Sequence-to-Sequence-Model-for-Abstractive-Text-Summarization" class="headerlink" title="7. A Reinforced Topic-Aware Convolutional Sequence-to-Sequence Model for Abstractive Text Summarization"></a>7. A Reinforced Topic-Aware Convolutional Sequence-to-Sequence Model for Abstractive Text Summarization</h3><p>Li Wang1, Junlin Yao2, Yunzhe Tao3, Li Zhong1, Wei Liu4, Qiang Du3<br>1 Tencent Data Center of SNG<br>2 ETH Zurich<br>3 Columbia University<br>4 Tencent AI Lab<br>IJCAI-ECAI2018<br>Conv Seq2seq + LDA + Reinforcement Learning</p>
+<h4 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h4><p><strong>Position Embedding:</strong> 每個詞的輸入=詞向量+位置向量。</p>
+<p><strong>Topic Embedding:</strong> 對於每個主題，抽取出前N個詞出來構成詞表K，預訓練得到topic embedding。對於輸入中的每個詞，如果在K中，則使用topic embedding，否則使用word embedding。<br><strong>Joint Attention:</strong> 在Topic-aware Conv過程中，計算Attention權重時，除了要計算當前decoder隱層狀態與每個encoder輸出的點積，還要計算當前decoder隱層狀態與input ebmedding中每個encoder輸出的點積，再求和並歸一化作為權重。<br><strong>Reinforcement Learning:</strong> 同A Deep Reinforced Model for Abstractive Summarization。</p>
+<h4 id="性能-4"><a href="#性能-4" class="headerlink" title="性能"></a>性能</h4><table>
+<thead>
+<tr>
+<th>Models</th>
+<th>Rouge-1</th>
+<th>Rouge-2</th>
+<th>Rouge-L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DUC2004</td>
+<td>31.15</td>
+<td>10.85</td>
+<td>27.68</td>
+</tr>
+<tr>
+<td>Gigaword</td>
+<td>36.92</td>
+<td>18.29</td>
+<td>34.58</td>
+</tr>
+<tr>
+<td>LCSTS(word)</td>
+<td>39.93</td>
+<td>33.08</td>
+<td>42.68</td>
+</tr>
+</tbody>
+</table>
+<h3 id="8-Deep-Communicating-Agents-for-Abstractive-Summarization"><a href="#8-Deep-Communicating-Agents-for-Abstractive-Summarization" class="headerlink" title="8. Deep Communicating Agents for Abstractive Summarization"></a>8. Deep Communicating Agents for Abstractive Summarization</h3><p>Asli Celikyilmaz1, et al.; MSRA<br>NAACL2018<br>Models<br>這篇文章想解決長文本的摘要問題，將文本劃分成多個段落，對每個段落進行encode操作並計算內部的word attention，最後得到整個段落的embedding。之後將所有段落合並到一起計算Context Agent Attention，作為decoder的輸入。<br>改進了Pointer Network，可以從不同段落中抽取單詞。<br>同樣使用了Reinforcement Learning，但是前面的RL目標函數都是采樣得到一個y，再計算y與輸出的y^之間Rouge得分差作為優化目標。這篇文章的每輸出一個單詞就計算一次當前Rouge得分，減去上一次的得分，作為優化目標。</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/LhPJWEp.png" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/KLJnqkx.png" class="lazyload"></p>
+<h3 id="9-Global-Encoding-for-Abstractive-Summarization"><a href="#9-Global-Encoding-for-Abstractive-Summarization" class="headerlink" title="9. Global Encoding for Abstractive Summarization"></a>9. Global Encoding for Abstractive Summarization</h3><p>Junyang Lin, Xu Sun, Shuming Ma, Qi Su; PKU<br>ACL2018<br><a href="http://aclweb.org/anthology/P18-2027" target="_blank" rel="noopener">http://aclweb.org/anthology/P18-2027</a><br>Models</p>
+<p>In neural abstractive summarization, the conventional sequence-to-sequence (seq2seq) model often suffers from repetition and semantic irrelevance. To tackle the problem, we propose a global encoding framework, which controls the information flow from the encoder to the decoder based on the global information of the source context. It consists of a <strong>convolutional gated unit</strong> to perform <strong>global encoding</strong> to improve the representations of the source-side information. Evaluations on the LCSTS and the English Gigaword both demonstrate that our model outperforms the baseline models, and the analysis shows that our model is capable of generating summary of higher quality and reducing repetition.</p>
+<p>這篇文章想解決的問題是decoder在輸出時可能會不斷重復已有的單詞。在ICLR2018的A Deep Reinforced Model for Abstractive Summarization已經用過Intra-Decoder Attention嘗試從已經輸出過的內容上解決這個問題，這篇文章提出了Global Encoding方法使用源文本來嘗試解決這個問題。</p>
+<h3 id="10-Fast-Abstractive-Summarization-with-Reinforce-Selected-Sentence-Rewriting"><a href="#10-Fast-Abstractive-Summarization-with-Reinforce-Selected-Sentence-Rewriting" class="headerlink" title="10. Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting"></a>10. Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting</h3><p>ACL2018<br><a href="https://arxiv.org/pdf/1805.11080.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1805.11080.pdf</a><br>Inspired by how humans summarize long documents, we propose an accurate and fast summarization model that first selects salient sentences and then rewrites them abstractively (i.e., compresses and paraphrases) to generate a concise overall summary. We use a <strong>novel sentence-level policy gradient method</strong> to bridge the non-differentiable computation between these two neural networks in a hierarchical way, while <strong>maintaining language fluency</strong>. Empirically, we achieve the new state-of-the-art on all metrics (including human evaluation) on the CNN/Daily Mail dataset, as well as <strong>significantly higher abstractiveness scores</strong>. Moreover, by first operating at the sentence-level and then the word-level, we enable <strong>parallel decoding</strong> of our neural generative model that results in substantially faster (10-20x) inference speed as well as 4x faster training convergence than previous long-paragraph encoder-decoder models. We also demonstrate the generalization of our model on the test-only DUC-2002 dataset, where we achieve higher scores than a state-of-the-art model.</p>
+<p>先選擇重要的句子，然後再改寫它生成一個簡潔全面的句子，保持了流暢性，decode速度很快。</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/OZYoPtr.png" class="lazyload"></p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/pUSa9bS.png" class="lazyload"></p>
+<h3 id="11-Soft-Layer-Specific-Multi-Task-Summarization-with-Entailment-and-Question-Generation"><a href="#11-Soft-Layer-Specific-Multi-Task-Summarization-with-Entailment-and-Question-Generation" class="headerlink" title="11. Soft Layer-Specific Multi-Task Summarization with Entailment and Question Generation"></a>11. Soft Layer-Specific Multi-Task Summarization with Entailment and Question Generation</h3><p>Han Guo∗ Ramakanth Pasunuru∗ Mohit Bansal<br>ACL2018<br><a href="http://aclweb.org/anthology/P18-1064" target="_blank" rel="noopener">http://aclweb.org/anthology/P18-1064</a></p>
+<p>An accurate abstractive summary of a document should contain all its salient information and should be logically entailed by the input document. We improve these important aspects of abstractive summarization via <strong>multi-task learning</strong> with the auxiliary(輔助) tasks of question generation and entailment generation, where the former teaches the summarization model how to look for <strong>salient questioning-worthy details</strong>, and the latter teaches the model how to <strong>rewrite a summary which is a directed-logical subset of the input document</strong>. We also propose novel multi-task architectures with high-level (semantic) layer-specific sharing across multiple encoder and decoder layers of the three tasks, as well as soft-sharing mechanisms (and show performance ablations and analysis examples of each contribution). Overall, we achieve statistically significant improvements over the state-of-the-art on both the CNN/DailyMail and Gigaword datasets, as well as on the DUC-2002 transfer setup. We also present several quantitative and qualitative analysis studies of our model’s learned saliency and entailment skills.</p>
+<p>用多任務學習輔助摘要生成。<br>1、question generation<br>teach摘要模型突出的值得質疑的細節。<br>2、entailment generation<br>teach模型重寫摘要which is a directed-logical subset of the input document.</p>
+<p>a novel multi-task architectures：<br>1、high-level (semantic) layer-specific sharing across multiple encoder and decoder layers of the three tasks.<br>2、soft-sharing mechanisms.</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/pVq3s9O.png" class="lazyload"></p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/AjGSRDZ.png" class="lazyload"></p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/EpeLnA5.png" class="lazyload"></p>
+<h3 id="12-Neural-Document-Summarization-by-Jointly-Learning-to-Score-and-Select-Sentences"><a href="#12-Neural-Document-Summarization-by-Jointly-Learning-to-Score-and-Select-Sentences" class="headerlink" title="12. Neural Document Summarization by Jointly Learning to Score and Select Sentences"></a>12. Neural Document Summarization by Jointly Learning to Score and Select Sentences</h3><p>Qingyu Zhou, Nan Yang, Furu Wei, Shaohan Huang, Ming Zhou, Tiejun Zhao<br>ACL2018<br><a href="http://www.aclweb.org/anthology/P18-1061" target="_blank" rel="noopener">http://www.aclweb.org/anthology/P18-1061</a></p>
+<p>Sentence scoring and sentence selection are two main steps in extractive document summarization systems. However, previous works treat them as two separated subtasks. In this paper, we present a novel end-to-end neural network framework for extractive document summarization by <strong>jointly learning to score and select sentences</strong>. It first reads the document sentences with a hierarchical encoder to obtain the representation of sentences. Then it builds the output summary by extracting sentences one by one. Different from previous methods, our approach <strong>integrates the selection strategy into the scoring model</strong>, which directly predicts the relative importance given previously selected sentences. Experiments on the CNN/Daily Mail dataset show that the proposed framework significantly outperforms the state-of-the-art extractive summarization models.</p>
+<p>整合打分和挑選的模型，已經被挑選出來的句子在下一個decode不會再被encode，減少重復。</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/ChA0T8t.png" class="lazyload"></p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/8orOXyA.png" class="lazyload"></p>
+<h3 id="13-A-Unified-Model-for-Extractive-and-Abstractive-Summarization-using-Inconsistency-Loss"><a href="#13-A-Unified-Model-for-Extractive-and-Abstractive-Summarization-using-Inconsistency-Loss" class="headerlink" title="13. A Unified Model for Extractive and Abstractive Summarization using Inconsistency Loss"></a>13. A Unified Model for Extractive and Abstractive Summarization using Inconsistency Loss</h3><p>Wan-Ting Hsu, Chieh-Kai Lin, Ming-Ying Lee, Kerui Min, Jing Tang, Min Sun<br>ACL2018<br><a href="http://aclweb.org/anthology/P18-1013" target="_blank" rel="noopener">http://aclweb.org/anthology/P18-1013</a></p>
+<p>We propose a uniﬁed model combining the strength of extractive and abstractive summarization. On the one hand, a simple extractive model can obtain sentence-level attention with high ROUGE scores but less readable. On the other hand, a more complicated abstractive model can obtain word-level dynamic attention to generate a more readable paragraph. In our model, sentence-level attention is used to modulate the word-level attention such that words in less attended sentences are less likely to be generated. Moreover, a novel inconsistency loss function is introduced to penalize the inconsistency between two levels of attentions. By end-to-end training our model with the inconsistency loss and original losses of extractive and abstractive models, we achieve state-of-the-art ROUGE scores while being the most informative and readable summarization on the CNN/Daily Mail dataset in a solid human evaluation.</p>
+<p>句子級別的抽取式摘要可以得到高的rouge分但是可讀性不高，詞級別的生成式摘要可以得到可讀性更高的句子。在這個模型中，使用sentence級的attention用來調節word級的attention，在sentence級別裏attention比較低的word傾向於不被產生。<br>使用兩個級別的model的不一致的loss function作爲penalty來train可以得到詳實的和可讀的信息，在人工的評價上也很高。</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Smn179H.png" class="lazyload"></p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/1EIlsyH.png" class="lazyload"></p>
+<h3 id="14-Retrieve-Rerank-and-Rewrite-Soft-Template-Based-Neural-Summarization"><a href="#14-Retrieve-Rerank-and-Rewrite-Soft-Template-Based-Neural-Summarization" class="headerlink" title="14. Retrieve, Rerank and Rewrite: Soft Template Based Neural Summarization"></a>14. Retrieve, Rerank and Rewrite: Soft Template Based Neural Summarization</h3><p>Ziqiang Cao, Wenjie Li, Sujian Li, Furu Wei<br>ACL2018<br><a href="http://www4.comp.polyu.edu.hk/~cszqcao/data/IRSum.pdf" target="_blank" rel="noopener">http://www4.comp.polyu.edu.hk/~cszqcao/data/IRSum.pdf</a></p>
+<p>Most previous seq2seq summarization systems purely depend on the source text to generate summaries, which tends to work unstably. Inspired by the traditional template-based summarization approaches, this paper proposes to use existing summaries as soft templates to guide the seq2seq model. To this end, we use a popular IR platform to Retrieve proper summaries as candidate templates. Then, we extend the seq2seq framework to jointly conduct template Reranking and template-aware summary generation (Rewriting). Experiments show that, in terms of informativeness, our model significantly outperforms the state-of-the-art methods, and even soft templates themselves demonstrate high competitiveness. In addition, the import of high-quality external summaries improves the stability and readability of generated summaries.</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/3eYj1Hl.png" class="lazyload"></p>
+<h3 id="15-Extractive-Summarization-with-SWAP-NET-Sentences-and-Words-from-Alternating-Pointer-Networks"><a href="#15-Extractive-Summarization-with-SWAP-NET-Sentences-and-Words-from-Alternating-Pointer-Networks" class="headerlink" title="15. Extractive Summarization with SWAP-NET: Sentences and Words from Alternating Pointer Networks"></a>15. Extractive Summarization with SWAP-NET: Sentences and Words from Alternating Pointer Networks</h3><p>Aishwarya Jadhav, Vaibhav Rajan<br>ACL2018<br><a href="http://aclweb.org/anthology/P18-1014" target="_blank" rel="noopener">http://aclweb.org/anthology/P18-1014</a></p>
+<p>We present a new neural sequence-to-sequence model for extractive summarization called SWAP-NET (Sentences and Words from Alternating Pointer Networks). Extractive summaries comprising a salient subset of input sentences, often also contain important key words. Guided by this principle, we design SWAP-NET that models the interaction of key words and salient sentences using a new two-level pointer network based architecture. SWAP-NET identifies both salient sentences and key words in an input document, and then combines them to form the extractive summary. Experiments on large scale benchmark corpora demonstrate the efficacy of SWAP-NET that outperforms state-of-the-art extractive summarizers.</p>
+<p>運用一個兩層的可選擇的pointer network結構，句子級和詞級，同時找出重要句子和關鍵字之間的交互然後重組寫成摘要。</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Z5Pg0IV.png" class="lazyload"></p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/czjKVBK.png" class="lazyload"></p>
+<h3 id="16-Autoencoder-as-Assistant-Supervisor-Improving-Text-Representation-for-Chinese-Social-Media-Text-Summarization"><a href="#16-Autoencoder-as-Assistant-Supervisor-Improving-Text-Representation-for-Chinese-Social-Media-Text-Summarization" class="headerlink" title="16. Autoencoder as Assistant Supervisor: Improving Text Representation for Chinese Social Media Text Summarization"></a>16. Autoencoder as Assistant Supervisor: Improving Text Representation for Chinese Social Media Text Summarization</h3><p>Shuming Ma, Xu SUN, Junyang Lin, Houfeng WANG<br>ACL2018</p>
+<p>Most of the current abstractive text summarization models are based on the sequence-to-sequence model (Seq2Seq). The source content of social media is long and noisy, so it is difficult for Seq2Seq to learn an accurate semantic representation. Compared with the source content, the annotated summary is short and well written. Moreover, it shares the same meaning as the source content. In this work, we supervise the learning of the representation of the source content with that of the summary. In implementation, we regard a summary autoencoder as an assistant supervisor of Seq2Seq. Following previous work, we evaluate our model on a popular Chinese social media dataset. Experimental results show that our model achieves the state-of-the-art performances on the benchmark dataset.</p>
+<p>source content of social media is long and noisy，對於seq2seq來說很難學到精確的語義表示，跟原文本相比，注釋好的摘要 is short and well written。而且，他們的意思和原文本是一樣的。用這些summary進行監督式學習來學習source content的表示。In implementation, we regard a summary autoencoder as an assistant supervisor of Seq2Seq.</p>
+<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/e8nVNX9.png" class="lazyload"></p>
+<p>Dataset<br>Large Scale Chinese Social Media Text Summarization Dataset (LCSTS)<br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/I8jdnxf.png" class="lazyload"></p>
+<h3 id="17-Reinforced-Extractive-Summarization-with-Question-Focused-Rewards"><a href="#17-Reinforced-Extractive-Summarization-with-Question-Focused-Rewards" class="headerlink" title="17. Reinforced Extractive Summarization with Question-Focused Rewards"></a>17. Reinforced Extractive Summarization with Question-Focused Rewards</h3><p>Kristjan Arumae, Fei Liu<br>ACL2018<br><a href="http://www.aclweb.org/anthology/P18-3015" target="_blank" rel="noopener">http://www.aclweb.org/anthology/P18-3015</a><br>We investigate a new training paradigm for extractive summarization. Traditionally, human abstracts are used to derive goldstandard labels for extraction units. However, the labels are often inaccurate, because human abstracts and source documents cannot be easily aligned at the word level. In this paper we convert human abstracts to a set of Cloze-style comprehension questions. System summaries are encouraged to preserve salient source content useful for answering questions and share common words with the abstracts. We use reinforcement learning to explore the space of possible extractive summaries and introduce a question-focused reward function to promote concise, fluent, and informative summaries. Our experiments show that the proposed method is effective. It surpasses state-of-the-art systems on the standard summarization dataset.</p>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/nlp/">nlp</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar lazyload" src="/images/placeholder.png" data-src="/images/header.jpg">
+      <p class="pf-des">The 1000th summer ————</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+         
+        
+	
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+	
+	<span class="share-btn">
+	<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/8102/08/02/welcome/" data-hover="Welcome">Prev</a>      
+            
+        
+      
+        
+        <a href="/2018/11/12/Problems-on-lda2vec/" data-hover="Problems on lda2vec"> Next</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    
+    <div id="disqus_thread"></div>
+
+    <script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());    
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
+
+	
+</article>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon lazyload" src="/images/placeholder.png" data-src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>        
+    
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+		
+		2018		
+	
+		Ginko
+		<br>
+<!--
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+-->
+
+		</div>			
+	 
+</footer>
+   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>

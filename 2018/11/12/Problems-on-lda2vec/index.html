@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  Problems on Lda2vec |   I-MAY-FALL </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      <header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		Problems on lda2vec
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		Nov 12, 2018
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			2868
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<blockquote>
+<p>lda2vec淌過得坑。<br><a href="https://github.com/cemoody/lda2vec" target="_blank" rel="noopener">https://github.com/cemoody/lda2vec</a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="Example-code-run-process"><a href="#Example-code-run-process" class="headerlink" title="Example code run process"></a>Example code run process</h2><h3 id="Preprocess"><a href="#Preprocess" class="headerlink" title="Preprocess"></a>Preprocess</h3><h1 id="A-package-should-be-installed"><a href="#A-package-should-be-installed" class="headerlink" title="A package should be installed"></a>A package should be installed</h1><ul>
+<li>Make sure these packages are installed<ul>
+<li>pyxDamerauLevenshtein</li>
+<li>gensim</li>
+<li>h5py</li>
+</ul>
+</li>
+<li>Due to a function were changed with the package update (<a href="https://github.com/gfairchild/pyxDamerauLevenshtein/blob/f657916e4b0db18935c9e32f7dd3c98df95bc15a/CHANGES.md#L5" target="_blank" rel="noopener">https://github.com/gfairchild/pyxDamerauLevenshtein/blob/f657916e4b0db18935c9e32f7dd3c98df95bc15a/CHANGES.md#L5</a>)<br>Renamed damerau_levenshtein_distance_withNPArray to damerau_levenshtein_distance_ndarray</li>
+<li>Change the deprecated function call in corpus.py, then re-run “python setup.py install”<br>Line<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = Word2Vec.load_word2vec_format(filename, binary=True)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>must be<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = gensim.models.KeyedVectors.load_word2vec_format(filename, binary=True)</span><br></pre></td></tr></table></figure></p>
+<p>under newer version of gensim</p>
+<ul>
+<li>Update the pre-train word vector model path<br>Line<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fn_wordvc = &apos;GoogleNews-vectors-negative300.bin.gz&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/cemoody/lda2vec/issues/45" target="_blank" rel="noopener">https://github.com/cemoody/lda2vec/issues/45</a><br><a href="https://github.com/cemoody/lda2vec/pull/46" target="_blank" rel="noopener">https://github.com/cemoody/lda2vec/pull/46</a><br><a href="https://github.com/gfairchild/pyxDamerauLevenshtein/blob/f657916e4b0db18935c9e32f7dd3c98df95bc15a/CHANGES.md#L5" target="_blank" rel="noopener">https://github.com/gfairchild/pyxDamerauLevenshtein/blob/f657916e4b0db18935c9e32f7dd3c98df95bc15a/CHANGES.md#L5</a></p>
+</blockquote>
+<h3 id="Train"><a href="#Train" class="headerlink" title="Train"></a>Train</h3><ul>
+<li>You may need to confirm that “dill” is installed<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install dill</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/51597073/python-no-module-named-dill-while-using-pickle-load" target="_blank" rel="noopener">https://stackoverflow.com/questions/51597073/python-no-module-named-dill-while-using-pickle-load</a></p>
+<ul>
+<li>You will need to downgrade chainer to version 1.24.0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install chainer==1.24.0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/chainer/chainer/issues/4708" target="_blank" rel="noopener">https://github.com/chainer/chainer/issues/4708</a></p>
+<ul>
+<li>You must change a code in lda2vec’s preprocessing.py, then re-run “python setup.py install”<br>Overwrite or replace the original function<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tokenize</span><span class="params">(texts, max_length, skip=<span class="number">-2</span>, attr=LOWER, merge=False, nlp=None, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">""""""</span></span><br><span class="line">    <span class="keyword">if</span> nlp <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        nlp = English()</span><br><span class="line">    data = np.zeros((len(texts), max_length), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    data[:] = skip</span><br><span class="line">    bad_deps = (<span class="string">'amod'</span>, <span class="string">'compound'</span>)</span><br><span class="line">    <span class="keyword">for</span> row, doc <span class="keyword">in</span> enumerate(nlp.pipe(texts, **kwargs)):</span><br><span class="line">        <span class="keyword">if</span> merge:</span><br><span class="line">            <span class="comment"># from the spaCy blog, an example on how to merge</span></span><br><span class="line">            <span class="comment"># noun phrases into single tokens</span></span><br><span class="line">            <span class="keyword">for</span> phrase <span class="keyword">in</span> doc.noun_chunks:</span><br><span class="line">                <span class="comment"># Only keep adjectives and nouns, e.g. "good ideas"</span></span><br><span class="line">                <span class="keyword">while</span> len(phrase) &gt; <span class="number">1</span> <span class="keyword">and</span> phrase[<span class="number">0</span>].dep_ <span class="keyword">not</span> <span class="keyword">in</span> bad_deps:</span><br><span class="line">                    phrase = phrase[<span class="number">1</span>:]</span><br><span class="line">                <span class="keyword">if</span> len(phrase) &gt; <span class="number">1</span>:</span><br><span class="line">                    <span class="comment"># Merge the tokens, e.g. good_ideas</span></span><br><span class="line">                    phrase.merge(phrase.root.tag_, phrase.text,</span><br><span class="line">                                 phrase.root.ent_type_)</span><br><span class="line">            <span class="comment"># Iterate over named entities</span></span><br><span class="line">            <span class="keyword">for</span> ent <span class="keyword">in</span> doc.ents:</span><br><span class="line">                <span class="keyword">if</span> len(ent) &gt; <span class="number">1</span>:</span><br><span class="line">                    <span class="comment"># Merge them into single tokens</span></span><br><span class="line">                    ent.merge(ent.root.tag_, ent.text, ent.label_)</span><br><span class="line">        dat = doc.to_array([attr, LIKE_EMAIL, LIKE_URL]).astype(<span class="string">'int32'</span>)</span><br><span class="line">        <span class="keyword">if</span> len(dat) &gt; <span class="number">0</span>:</span><br><span class="line">            dat = dat.astype(<span class="string">'int32'</span>)</span><br><span class="line">            msg = <span class="string">"Negative indices reserved for special tokens"</span></span><br><span class="line">            <span class="keyword">assert</span> dat.min() &gt;= <span class="number">0</span>, msg</span><br><span class="line">            <span class="comment"># Replace email and URL tokens</span></span><br><span class="line">            idx = (dat[:, <span class="number">1</span>] &gt; <span class="number">0</span>) | (dat[:, <span class="number">2</span>] &gt; <span class="number">0</span>)</span><br><span class="line">            dat[idx] = skip</span><br><span class="line">            length = min(len(dat), max_length)</span><br><span class="line">            data[row, :length] = dat[:length, <span class="number">0</span>].ravel()</span><br><span class="line">    uniques = np.unique(data)</span><br><span class="line">    vocab = &#123;v: nlp.vocab[v].lower_ <span class="keyword">for</span> v <span class="keyword">in</span> uniques <span class="keyword">if</span> v != skip&#125;</span><br><span class="line">    vocab[skip] = <span class="string">'&lt;SKIP&gt;'</span></span><br><span class="line">    <span class="keyword">return</span> data, vocab</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>and make sure Spacy’s version is 1.9<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install spacy==1.9</span><br><span class="line">python -m spacy download en</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="https://github.com/cemoody/lda2vec/issues/38" target="_blank" rel="noopener">https://github.com/cemoody/lda2vec/issues/38</a></p>
+<ul>
+<li>You must have a valid and suitable package “Cupy”<br>Follow the instruction in below’s link to install it<br><a href="http://docs-cupy.chainer.org/en/stable/install.html#install-cupy" target="_blank" rel="noopener">http://docs-cupy.chainer.org/en/stable/install.html#install-cupy</a></li>
+</ul>
+</blockquote>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/nlp/">nlp</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">The 1000th summer ————</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+         
+        
+	
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+	
+	<span class="share-btn">
+	<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/2018/12/06/Automatic-Summarization-Paper-Note/" data-hover="Automatic Summarization Paper Note">Prev</a>      
+            
+        
+      
+        
+        <a href="/2018/08/21/gensim/" data-hover="Gensim入门"> Next</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    
+    <div id="disqus_thread"></div>
+
+    <script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());    
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
+
+	
+</article>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>        
+    
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+     
+    
+
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+		
+		2018		
+	
+		Ginko
+		<br>
+<!--
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+-->
+
+		</div>			
+	 
+</footer>
+   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
