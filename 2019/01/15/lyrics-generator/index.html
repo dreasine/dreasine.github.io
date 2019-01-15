@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  
+  <title>  从零开始用深度学习生成林夕曲风的歌词 |   I-MAY-FALL </title>
+
+ 
+  
+    <link rel="icon" href="/images/favicon.png">
+  
+
+
+  <link rel="stylesheet" href="/nayo.min.css"> 
+</head>  
+  <body>   
+    
+      
+<header class="header">
+	
+  <nav class="header-nav">        
+   
+    <span class="iconfont icon-menu mobile-toggle"></span>   	
+
+    <div class="header-menu">          
+              
+            
+
+              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
+
+            
+            
+            
+
+              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
+
+            
+            
+            
+
+              <a class="iconfont icon-menu-search header-menu-link" id="header-menu-search"></a>
+
+            
+                
+    </div>  
+    
+  </nav>
+</header>
+
+
+   
+
+      <div class="container">       
+          
+          
+            <section class="main">  
+          
+
+          <article class="post">
+  
+	<div class="post-header">
+
+	<p class="post-title">	
+		从零开始用深度学习生成林夕曲风的歌词
+	</p>
+			
+
+	<div class="meta-info">	
+	<span>
+		Jan 15, 2019
+	</span>
+
+	
+	
+		<i class="iconfont icon-words"></i>
+		<span>
+			1699
+		</span>
+	
+</div>
+
+</div> 
+	 
+
+	  <div class="post-content slideDownMin">
+
+		
+
+			
+					<p>歌词是一种用来配合音乐咏唱的文学体裁，好的词作往往只用非常简短的语言就能描绘出丰富的情感。林夕是一位非常有才华的作词人，他善用细腻的描写和大量的修辞手法将深刻复杂、百转千回的情感刻画的入木三分，让人产生强烈的共鸣。而他从1985年开始尝试作词以来就非常高产，作品的质量也都非常高，比如《追》《春秋》《黑择明》《富士山下》《再见二丁目》等都是非常优秀的作品，所以我们试图训练一个Language model来模仿林夕的写作风格，产生新的歌词。</p>
+<p>程序可以在我的<a href="https://github.com/dreasine/Lyrics_generator" target="_blank" rel="noopener">github</a>上获得，语言模型的部分参考fukuball的project <a href="https://github.com/fukuball/Tom-Chang-Deep-Lyrics" target="_blank" rel="noopener">Tom-Chang-Deep-Lyrics</a>：Character-level language models for text generation based-on LSTM.</p>
+<p>模型结构如下：<br><img src="https://i.imgur.com/bdjW4vb.png" alt=""></p>
+<a id="more"></a>
+<h2 id="爬取歌词"><a href="#爬取歌词" class="headerlink" title="爬取歌词"></a>爬取歌词</h2><p>首先寻找可以爬取的歌词语料，我选择了网易云上数量最多的林夕歌单，截止目前收录了3126首林夕的作品。<br>使用活页夹里的get_lyrics.ipynb把歌单里的歌词爬取到一个文档里。<br><img src="https://i.imgur.com/lEV3GIJ.png" alt=""></p>
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>得到歌词预料后需要对数据进行清洗，主要进行如下操作。</p>
+<ol>
+<li><p>简繁转换。（用OpenCC实现）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opencc -i lx_songlist_preprocess.txt -o lx_songlist_preprocess_zh.txt -c zht2zhs.ini</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除作词、作曲、演唱等噪声。</p>
+</li>
+<li>删除文本中的空行。</li>
+</ol>
+<p>处理后大约能得到923kB的corpus。</p>
+<h2 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h2><h3 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorflow==1.8.0</span><br></pre></td></tr></table></figure>
+<p>运行如下指令对model进行训练，Config.py里可以调整对应的参数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py lyrics/lx_songlist_preprocess.txt</span><br></pre></td></tr></table></figure>
+<h2 id="生成歌词"><a href="#生成歌词" class="headerlink" title="生成歌词"></a>生成歌词</h2><p>运行generate.ipynb，修改start_sentence就可以生成不同的歌词。在writing活页夹里有之前生成的样例歌词。以下是部分结果展示：</p>
+<h3 id="如果"><a href="#如果" class="headerlink" title="如果"></a>如果</h3><p>先用“如果”开头测试一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">如果碰见我</span><br><span class="line">难道你 只需要一个</span><br><span class="line">回头或能面对</span><br><span class="line">如何自爱 如何自欺</span><br><span class="line">难道自己 如何自欺</span><br><span class="line">难道在你在你在你是谁是谁是谁</span><br><span class="line">谁是你最有感觉留下过去</span><br><span class="line">我的身体 你是我最佳听众</span><br><span class="line">好像 很像 心灵相通</span><br><span class="line">我就是你永远也不值得</span><br><span class="line">我要他身边在乎</span><br><span class="line">你的幸福 我是我最佳听众</span><br><span class="line">好像 很像 心灵相通</span><br><span class="line">我的心 你的眼泪</span><br><span class="line">流浪在我的心 为了一直到你的家</span><br><span class="line">越爱越深 越风靡越风流</span><br><span class="line">是你所有的 我就是我一样</span><br><span class="line">忘掉道行 是我的心</span><br><span class="line">我的情人</span><br></pre></td></tr></table></figure></p>
+<h3 id="忘掉种过的花"><a href="#忘掉种过的花" class="headerlink" title="忘掉种过的花"></a>忘掉种过的花</h3><p>然后用黄伟文熟悉的作品《喜帖街》第一句歌词作为开头测试，看是否会有不一样的感觉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">忘掉种过的花</span><br><span class="line">你的爱还是始终</span><br><span class="line">为何为你 为爱而为爱为错 为了什么 期待你</span><br><span class="line">我的心 你的心 我很懂</span><br><span class="line">痛就痛 痛苦快乐吧 也要开心</span><br><span class="line">我的身体跟你思想</span><br><span class="line">在你面前不用口是心非</span><br><span class="line">在最寂寞的关系 永远在左右</span><br><span class="line">事过情迁后 升华以后）升华眼泪后</span><br><span class="line">思念是最漫长的享受（漫长的享受（漫长的享受）</span><br><span class="line">无人的快乐 是我的心情</span><br><span class="line">在我耳边的我 没有所谓</span><br><span class="line">只有你的心跳 还能是真的明白</span><br><span class="line">我的眼泪 埋藏在我的心</span><br><span class="line">我的眼泪 埋藏在我的心</span><br><span class="line">我的眼泪</span><br></pre></td></tr></table></figure></p>
+<h3 id="生似蜉蝣"><a href="#生似蜉蝣" class="headerlink" title="生似蜉蝣"></a>生似蜉蝣</h3><p>最后用林夕自己的作品《阿猫阿狗》里的一句话：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">生似蜉蝣</span><br><span class="line">只想你幸福不担心的经过</span><br><span class="line">不必记得失去时期</span><br><span class="line">然后可上天下地</span><br><span class="line">记得三岁何处看戏</span><br><span class="line">不淮记得你</span><br><span class="line">不淮再展一条愁眉</span><br><span class="line">然后跟你玩妒忌</span><br><span class="line">爱不到你还要爱美</span><br><span class="line">期待我情深不死</span><br><span class="line">不淮记得失眠时期</span><br><span class="line">然后可上天下地</span><br><span class="line">记得三岁何处看戏</span><br><span class="line">不淮记得你</span><br><span class="line">合着眼睛 怀着笑意的决定</span><br><span class="line">我的情绪是你的心情</span><br><span class="line">在最寂寞的关心 永远在左右</span><br><span class="line">事过情迁后 升华以后）升华眼泪后</span><br><span class="line">思念是你的心</span><br><span class="line">我的心 我的心</span><br><span class="line">我的眼泪能流浪</span><br><span class="line">流过的泪水 把你的问性</span><br></pre></td></tr></table></figure></p>
+<p>可以看出还是会有一些重复，语义不详，或是直接使用大段现有歌词文本的情况出现，可能还是因为data不够多的问题，本来考虑用林夕的书来作为补充语料pretrain，后来发现林夕文章的风格和词作的差异太大效果反而不好，遂放弃。之后可能会试试其他风格较明显的词作来看看是否能生成文风之间的区别，比如黄伟文、五月天或苏打绿，还可以尝试加入一些诗词的语料作为辅助。</p>
+  	
+					
+	  </div>     
+	  
+
+	
+<div class="post-meta">
+      	
+
+      
+        <i class="iconfont icon-tag"></i>     
+          <a class="tag-link" href="/tags/nlp/">nlp</a>    
+      	
+</div>
+
+
+
+
+
+<div class="post-footer">
+  <div class="pf-left">
+      <img class="pf-avatar" src="/images/header.jpg">
+      <p class="pf-des">The 1000th summer ————</p>
+  </div>
+
+  <div class="pf-right">           
+      <div class="pf-links">
+         
+        
+	
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=21d601593a1de"></script>
+	
+	<span class="share-btn">
+	<span class="iconfont icon-share"></span>
+	</span>
+
+
+	<div class="-mob-share sildeUpMin">
+		   			             
+            <a class="iconfont  icon-share-qq -mob-share-qq"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weixin -mob-share-weixin"></a>		
+     	   			             
+            <a class="iconfont  icon-share-weibo -mob-share-weibo"></a>		
+     	   			             
+            <a class="iconfont  icon-share-douban -mob-share-douban"></a>		
+     	   			             
+            <a class="iconfont  icon-share-facebook -mob-share-facebook"></a>		
+     	   			             
+            <a class="iconfont  icon-share-twitter -mob-share-twitter"></a>		
+     	   			             
+            <a class="iconfont  icon-share-google -mob-share-google"></a>		
+     	   
+	</div>	
+
+      </div>  
+    <nav class="pf-paginator">
+      
+         
+          <a href="/8102/08/02/welcome/" data-hover="Welcome">Prev</a>      
+            
+        
+      
+        
+        <a href="/2018/12/06/Automatic-Summarization-Paper-Note/" data-hover="Automatic Summarization Paper Note"> Next</a>
+            
+  </nav>   
+  </div>
+</div> 
+	
+
+
+    
+    <div id="disqus_thread"></div>
+
+    <script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());    
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+
+
+	
+</article>
+
+          </section> 
+      </div>            
+    
+    <a id="backTop">
+      <span>
+        <i class="iconfont icon-backtotop"></i>
+      </span>
+    </a> 
+
+  
+    
+    <div class="search-container sildeUpMin">
+        <div class="search-header">
+            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
+            <span class="search-cancel iconfont icon-cancel"></span>
+        </div>
+        <div id="search-result" class="search-result"></div>
+    </div>
+ 
+     <div class="mobile-menu">      
+
+      
+      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      
+
+         
+            
+
+            <a class="mobile-menu-link" href="/">Home
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/archives">Archives
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/tags">Tags
+            </a>
+            
+         
+            
+
+            <a class="mobile-menu-link" href="/about">About
+            </a>
+            
+         
+                          
+
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            
+         
+      
+</div>        
+    
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+     
+    
+
+
+
+<footer id="footer">	    
+
+		
+		<div class="footer-copyright">
+		&copy;
+				
+		2018-
+		
+		2019		
+	
+		Ginko
+		<br>
+<!--
+		Theme By
+		<a href="https://github.com/Lemonreds/hexo-theme-Nayo" target="_blank">Nayo</a>	
+-->
+
+		</div>			
+	 
+</footer>
+
+
+   
+
+  
+
+    <script src="/nayo.bundle.js"></script>           
+  </body>        
+</html>
