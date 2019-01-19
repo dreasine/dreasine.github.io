@@ -28,25 +28,25 @@
               
             
 
-              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
 
             
             
@@ -88,7 +88,7 @@
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			15933
+			15961
 		</span>
 	
 </div>
@@ -115,6 +115,7 @@
 <li>Attention-based encoder:<br>x: 原始文本<br>y_c: 上下文單詞（已經輸出的摘要內容）</li>
 </ol>
 <h4 id="性能-ABS"><a href="#性能-ABS" class="headerlink" title="性能(ABS)"></a>性能(ABS)</h4><p>output use Beam Search algorithm.<br>本模型效果並不讓人滿意.</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -139,10 +140,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="2-Abstractive-Sentence-Summarization-with-Attentive-Recurrent-Neural-Networks"><a href="#2-Abstractive-Sentence-Summarization-with-Attentive-Recurrent-Neural-Networks" class="headerlink" title="2. Abstractive Sentence Summarization with Attentive Recurrent Neural Networks"></a>2. Abstractive Sentence Summarization with Attentive Recurrent Neural Networks</h3><p>Sumit Chopra et al., Facebook AI Research<br>NAACL2016</p>
 <h4 id="encoder-使用了基於註意力的CNN"><a href="#encoder-使用了基於註意力的CNN" class="headerlink" title="encoder: 使用了基於註意力的CNN"></a>encoder: 使用了基於註意力的CNN</h4><p>先將詞的原始embedding(x_i)和<strong>位置embedding(l_i)</strong>（可訓練）相加，作為詞的full embedding(a_i).<br>full embedding(a_i) = embedding(x_i)+embedding(l_i)<br>convolution:size=5  -&gt; aggregate embedding(z_i)</p>
 <h4 id="decoder-RNN-LSTM"><a href="#decoder-RNN-LSTM" class="headerlink" title="decoder: RNN/LSTM"></a>decoder: RNN/LSTM</h4><p>模型encoder的輸入每次都是一個完整地句子，decoder每次要輸出的時候，會將h_t-1給encoder，encoder根據句子和h_t-1計算attention生成c_t給decoder，然後decoder根據(y_t-1, h_t-1, c_t)計算要輸出的單詞。encoder還要更新position embedding(l_i)</p>
-<h4 id="性能-RAS-Elman-k-10-k-means-beam-size"><a href="#性能-RAS-Elman-k-10-k-means-beam-size" class="headerlink" title="性能(RAS-Elman, k=10, k means beam size):"></a>性能(RAS-Elman, k=10, k means beam size):</h4><table>
+<h4 id="性能-RAS-Elman-k-10-k-means-beam-size"><a href="#性能-RAS-Elman-k-10-k-means-beam-size" class="headerlink" title="性能(RAS-Elman, k=10, k means beam size):"></a>性能(RAS-Elman, k=10, k means beam size):</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Models</th>
@@ -166,9 +169,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="3-Selective-Encoding-for-Abstractive-Sentence-Summarization"><a href="#3-Selective-Encoding-for-Abstractive-Sentence-Summarization" class="headerlink" title="3. Selective Encoding for Abstractive Sentence Summarization"></a>3. Selective Encoding for Abstractive Sentence Summarization</h3><p>Qingyu Zhou, Nan Yang, Furu Wei, Ming Zhou; MSRA&amp;HIT<br>ACL2017</p>
 <p><strong>Encoder</strong><br>BiGRU: 為每個詞x_i生成一個2d維的hidden state(h_i)<br>Selective Mechanism<br>將詞的h_i與句子的s拼接到一起，MLP裏生成輸出h‘_i。<br>s=[h←1, h→n]: h←1表示從右到左讀取了整個句子, h→n表示從左到右讀取了整個句子。<br><strong>Decoder</strong><br>st = GRU(s_t-1, c_t-1, y_t-1)<br>r= maxout(c_t，s_t, y_t-1)(k=2)</p>
-<h4 id="性能-all-are-state-of-the-art"><a href="#性能-all-are-state-of-the-art" class="headerlink" title="性能: all are state-of-the-art"></a>性能: all are state-of-the-art</h4><table>
+<h4 id="性能-all-are-state-of-the-art"><a href="#性能-all-are-state-of-the-art" class="headerlink" title="性能: all are state-of-the-art"></a>性能: all are state-of-the-art</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Models</th>
@@ -192,11 +197,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>Gigaword(ours): Rouge-1:46.86/Rouge-2:24.58/Rouge-L:43.53(so high)</p>
 <h2 id="Text-summarization-multi-sentence-summaries"><a href="#Text-summarization-multi-sentence-summaries" class="headerlink" title="Text summarization(multi-sentence summaries)"></a>Text summarization(multi-sentence summaries)</h2><h3 id="1-Abstractive-Text-Summarization-Using-Sequence-to-Sequence-RNNs-and-Beyond"><a href="#1-Abstractive-Text-Summarization-Using-Sequence-to-Sequence-RNNs-and-Beyond" class="headerlink" title="1. Abstractive Text Summarization Using Sequence-to-Sequence RNNs and Beyond"></a>1. Abstractive Text Summarization Using Sequence-to-Sequence RNNs and Beyond</h3><p>Ramesh Nallapati, Bowen Zhou, Cicero dos Santos; IBM<br>CoNLL2016</p>
 <h4 id="Many-tricks"><a href="#Many-tricks" class="headerlink" title="Many tricks:"></a>Many tricks:</h4><p><strong>LVT/sampled softmax:</strong> seq2seq輸出的時候使用了softmax，計算V中的每個詞的值並歸一化，這一步非常耗時。sampled softmax對每個句子/文章單獨采樣了一個V‘，只對V‘中的詞計算softmax並歸一化，大幅減少了訓練時的計算量。不過在測試的時候仍然需要計算所有詞。<br><strong>Feature-rich encoder:</strong> 將POS、NER、TF、IDF等文本特征拼接在word embedding後面作為encoder的輸入。<br><strong>Switching Generator-Pointer:</strong> 這個操作主要用於解決OOV和UNK問題，當碰到OOV時，g_i置為0，模型會從輸入中尋找一個詞作為輸出和下一時間片的輸入。測試時模型會自動決定采用decoder的輸出還是從輸入中挑選一個詞作為輸出。<br><strong>Hierarchical Attention:</strong> 模型會對每個句子計算attention，並整合句子的權重計算每個詞的權重。句子的的隱層狀態後面還會拼接position embedding。<br>Hierarchical Attention效果沒有預期的好，作者還使用了Temporary Attention(Sankaran et al., 2016, Temporal Attention Model for Neural Machine Translation)，效果大幅提升。</p>
 <p><strong>DataSet:</strong> 本文提出了CNN/Daily Mail Corpus，每個摘要包含了多個句子（之前的DUC2004和Gigaword每個摘要只包含1個句子），後續被大量用於評測。</p>
-<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><table>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Models</th>
@@ -220,11 +227,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="2-Incorporating-copying-mechanism-in-sequence-to-sequence-learning"><a href="#2-Incorporating-copying-mechanism-in-sequence-to-sequence-learning" class="headerlink" title="2. Incorporating copying mechanism in sequence-to-sequence learning"></a>2. Incorporating copying mechanism in sequence-to-sequence learning</h3><p>被引用次数：208<br>Jiatao GU et al.<br>ACL2016<br>using LCSTS Dataset<br>Models<br>整體:<br><img src="https://i.imgur.com/7gcz1PM.png" alt=""><br>這篇論文則將概率相加再softmax得到輸出。對於V中的每個詞，計算generation模式的概率，對於X中的每個詞，計算copy模式的概率，最後進行歸一化，得到輸出。<br><img src="https://i.imgur.com/kOR93VD.png" alt=""><br>Decoder State Update: s_t=f(s_t-1, y_t-1, c_t)這個和常規的是一樣的，但是這裏的y_t-1=[e(y_t-1), C(y_t-1)]T，e就是y_t-1的embedding，C是輸入單詞的權重，對跟y_t-1相同的詞進行計算，不相同的詞直接置0，然後歸一化。<br>Code: <a href="https://github.com/MultiPath/CopyNet" target="_blank" rel="noopener">https://github.com/MultiPath/CopyNet</a><br>性能:<br>| Models | Rouge-1 | Rouge-2 | Rouge-L |<br>| ——– | ——– | ——– | —— |<br>| LCSTS(Word Level)     | 35.0     | 22.3     | 32.0 |</p>
+</div>
+<h3 id="2-Incorporating-copying-mechanism-in-sequence-to-sequence-learning"><a href="#2-Incorporating-copying-mechanism-in-sequence-to-sequence-learning" class="headerlink" title="2. Incorporating copying mechanism in sequence-to-sequence learning"></a>2. Incorporating copying mechanism in sequence-to-sequence learning</h3><p>被引用次数：208<br>Jiatao GU et al.<br>ACL2016<br>using LCSTS Dataset<br>Models<br>整體:<br><img src="https://i.imgur.com/7gcz1PM.png" alt=""><br>這篇論文則將概率相加再softmax得到輸出。對於V中的每個詞，計算generation模式的概率，對於X中的每個詞，計算copy模式的概率，最後進行歸一化，得到輸出。<br><img src="https://i.imgur.com/kOR93VD.png" alt=""><br>Decoder State Update: s_t=f(s_t-1, y_t-1, c_t)這個和常規的是一樣的，但是這裏的y_t-1=[e(y_t-1), C(y_t-1)]T，e就是y_t-1的embedding，C是輸入單詞的權重，對跟y_t-1相同的詞進行計算，不相同的詞直接置0，然後歸一化。<br>Code: <a href="https://github.com/MultiPath/CopyNet" target="_blank" rel="noopener">https://github.com/MultiPath/CopyNet</a><br>性能:<br>| Models | Rouge-1 | Rouge-2 | Rouge-L |<br>| ———— | ———— | ———— | ——— |<br>| LCSTS(Word Level)     | 35.0     | 22.3     | 32.0 |</p>
 <h3 id="3-Get-To-The-Point-Summarization-with-Pointer-Generator-Networks"><a href="#3-Get-To-The-Point-Summarization-with-Pointer-Generator-Networks" class="headerlink" title="3. Get To The Point: Summarization with Pointer-Generator Networks"></a>3. Get To The Point: Summarization with Pointer-Generator Networks</h3><p>ACL17<br><img src="https://i.imgur.com/cot38a2.png" alt=""></p>
 <p>相比於上一個將概率相加的方式，這篇paper使用一個開關控制copy的方式。上图展示了 decoder 的第三个 step，预测 Germany beat 后面一个单词，像之前一样，我们会计算一个 attention distribution 和 vocabulary distribution，不过同时，也会计算一个产生概率 pgen，是 0-1 间的一个值，表示从 vocabulary 中产生一个单词的概率，相应的 1−pgen 就是从输入中 copy 一个单词的概率。</p>
 <p><strong>Coverage</strong><br>用 attention distribution 来记录哪些部分已经总结过了，来惩罚再次加入计算的部分。decoder 的每个时刻，有一个 coverage vector ct 来将记录之前所有时刻 attention 的总和。</p>
-<h4 id="性能-1"><a href="#性能-1" class="headerlink" title="性能"></a>性能</h4><table>
+<h4 id="性能-1"><a href="#性能-1" class="headerlink" title="性能"></a>性能</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>pointer-generator</th>
@@ -242,6 +251,8 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -260,8 +271,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="4-Sequential-Copying-Networks"><a href="#4-Sequential-Copying-Networks" class="headerlink" title="4. Sequential Copying Networks"></a>4. Sequential Copying Networks</h3><p>Qingyu Zhouy, Nan Yang, Furu Wei, Ming Zhou; HIT &amp; MSRA<br>AAAI2018<br>原先的CopyNet每次copy一個詞，這篇文章一次可以copy多個詞（詞組），通過給每個copy的詞打標簽來判斷是否結束。</p>
-<h4 id="性能-2"><a href="#性能-2" class="headerlink" title="性能"></a>性能</h4><table>
+<h4 id="性能-2"><a href="#性能-2" class="headerlink" title="性能"></a>性能</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Models</th>
@@ -279,6 +292,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="5-A-Deep-Reinforced-Model-for-Abstractive-Summarization"><a href="#5-A-Deep-Reinforced-Model-for-Abstractive-Summarization" class="headerlink" title="5. A Deep Reinforced Model for Abstractive Summarization"></a>5. A Deep Reinforced Model for Abstractive Summarization</h3><p>Romain Paulus, Caiming Xiong &amp; Richard Socher; Salesforce Research<br>ICLR2018<br>Reinforcement Learning</p>
 <h4 id="Models-Attention-Mechanism"><a href="#Models-Attention-Mechanism" class="headerlink" title="Models(Attention Mechanism)"></a>Models(Attention Mechanism)</h4><ol>
 <li>Intra-Temporal Attention</li>
@@ -287,7 +301,8 @@
 <li>Teacher Forcing算法。通常的目標函數都是NLL，然而即便達到最優，在使用離散評價方式（ROUGE, CIDEr, BLEU）進行評價的時候，往往得不到最好的效果，主要原因有倆：1. 訓練的時候使用正確的單詞作為下一時間片的輸入，每一步的錯誤不會累積，但是測試的時候每一步的錯誤會累積到下一時間片。2. 輸出文本的詞序是靈活的，離散的評價方式也考慮到了這種靈活性，但是NLL沒有。</li>
 <li>Policy Learning: 強化學習的兩種常用算法（Policy Gradient, Q-Learning）之一。本文使用self-critical policy gradient training algorithm (Rennie et al., 2016)。</li>
 </ol>
-<h4 id="性能-3"><a href="#性能-3" class="headerlink" title="性能"></a>性能</h4><table>
+<h4 id="性能-3"><a href="#性能-3" class="headerlink" title="性能"></a>性能</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Mail(only ML)</th>
@@ -305,6 +320,8 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -323,6 +340,8 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -341,9 +360,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="https://i.imgur.com/izWV8F1.png" alt=""></p>
 <h3 id="6-Fast-Abstractive-Summarization-with-Reinforce-Selected-Sentence-Rewriting"><a href="#6-Fast-Abstractive-Summarization-with-Reinforce-Selected-Sentence-Rewriting" class="headerlink" title="6.Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting"></a>6.Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting</h3><p>Yen-Chun Chen, Mohit Bansal; UNC Chapel Hill<br>ACL2018<br>Extractor + Abstractor + Reinforcement Learning</p>
 <h4 id="decoder-CopyNet-like"><a href="#decoder-CopyNet-like" class="headerlink" title="decoder: CopyNet-like"></a>decoder: CopyNet-like</h4><p>快: parallel decoding<br>強化學習僅調整Extractor參數，不調整Abstractor參數，避免生成的句子可讀性差，同樣使用Policy Gradient學習算法。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -362,10 +383,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="7-A-Reinforced-Topic-Aware-Convolutional-Sequence-to-Sequence-Model-for-Abstractive-Text-Summarization"><a href="#7-A-Reinforced-Topic-Aware-Convolutional-Sequence-to-Sequence-Model-for-Abstractive-Text-Summarization" class="headerlink" title="7. A Reinforced Topic-Aware Convolutional Sequence-to-Sequence Model for Abstractive Text Summarization"></a>7. A Reinforced Topic-Aware Convolutional Sequence-to-Sequence Model for Abstractive Text Summarization</h3><p>Li Wang1, Junlin Yao2, Yunzhe Tao3, Li Zhong1, Wei Liu4, Qiang Du3<br>1 Tencent Data Center of SNG<br>2 ETH Zurich<br>3 Columbia University<br>4 Tencent AI Lab<br>IJCAI-ECAI2018<br>Conv Seq2seq + LDA + Reinforcement Learning</p>
 <h4 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h4><p><strong>Position Embedding:</strong> 每個詞的輸入=詞向量+位置向量。</p>
 <p><strong>Topic Embedding:</strong> 對於每個主題，抽取出前N個詞出來構成詞表K，預訓練得到topic embedding。對於輸入中的每個詞，如果在K中，則使用topic embedding，否則使用word embedding。<br><strong>Joint Attention:</strong> 在Topic-aware Conv過程中，計算Attention權重時，除了要計算當前decoder隱層狀態與每個encoder輸出的點積，還要計算當前decoder隱層狀態與input ebmedding中每個encoder輸出的點積，再求和並歸一化作為權重。<br><strong>Reinforcement Learning:</strong> 同A Deep Reinforced Model for Abstractive Summarization。</p>
-<h4 id="性能-4"><a href="#性能-4" class="headerlink" title="性能"></a>性能</h4><table>
+<h4 id="性能-4"><a href="#性能-4" class="headerlink" title="性能"></a>性能</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Models</th>
@@ -395,6 +418,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="8-Deep-Communicating-Agents-for-Abstractive-Summarization"><a href="#8-Deep-Communicating-Agents-for-Abstractive-Summarization" class="headerlink" title="8. Deep Communicating Agents for Abstractive Summarization"></a>8. Deep Communicating Agents for Abstractive Summarization</h3><p>Asli Celikyilmaz1, et al.; MSRA<br>NAACL2018<br>Models<br>這篇文章想解決長文本的摘要問題，將文本劃分成多個段落，對每個段落進行encode操作並計算內部的word attention，最後得到整個段落的embedding。之後將所有段落合並到一起計算Context Agent Attention，作為decoder的輸入。<br>改進了Pointer Network，可以從不同段落中抽取單詞。<br>同樣使用了Reinforcement Learning，但是前面的RL目標函數都是采樣得到一個y，再計算y與輸出的y^之間Rouge得分差作為優化目標。這篇文章的每輸出一個單詞就計算一次當前Rouge得分，減去上一次的得分，作為優化目標。</p>
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/LhPJWEp.png" class="lazyload"><br><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/KLJnqkx.png" class="lazyload"></p>
 <h3 id="9-Global-Encoding-for-Abstractive-Summarization"><a href="#9-Global-Encoding-for-Abstractive-Summarization" class="headerlink" title="9. Global Encoding for Abstractive Summarization"></a>9. Global Encoding for Abstractive Summarization</h3><p>Junyang Lin, Xu Sun, Shuming Ma, Qi Su; PKU<br>ACL2018<br><a href="http://aclweb.org/anthology/P18-2027" target="_blank" rel="noopener">http://aclweb.org/anthology/P18-2027</a><br>Models</p>
@@ -494,12 +518,12 @@
     <nav class="pf-paginator">
       
          
-          <a href="/2019/01/15/lyrics-generator/" data-hover="从零开始用深度学习生成林夕曲风的歌词">上一篇</a>      
+          <a href="/2019/01/15/lyrics-generator/" data-hover="从零开始用深度学习生成林夕曲风的歌词">Prev</a>      
             
         
       
         
-        <a href="/2018/11/12/Problems-on-lda2vec/" data-hover="Problems on lda2vec"> 下一篇</a>
+        <a href="/2018/11/12/Problems-on-lda2vec/" data-hover="Problems on lda2vec"> Next</a>
             
   </nav>   
   </div>
@@ -539,7 +563,7 @@
     
     <div class="search-container sildeUpMin">
         <div class="search-header">
-            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
             <span class="search-cancel iconfont icon-cancel"></span>
         </div>
         <div id="search-result" class="search-result"></div>
@@ -554,49 +578,36 @@
          
             
 
-            <a class="mobile-menu-link" href="/">首页
+            <a class="mobile-menu-link" href="/">Home
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/archives">归档
+            <a class="mobile-menu-link" href="/archives">Archives
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/tags">标签
+            <a class="mobile-menu-link" href="/tags">Tags
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/about">关于
+            <a class="mobile-menu-link" href="/about">About
             </a>
             
          
                           
 
-            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
             
          
       
 </div>        
     
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
 
 
 

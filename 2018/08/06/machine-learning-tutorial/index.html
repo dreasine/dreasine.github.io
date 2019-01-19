@@ -28,25 +28,25 @@
               
             
 
-              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
 
             
             
@@ -88,7 +88,7 @@
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			46259
+			46109
 		</span>
 	
 </div>
@@ -223,20 +223,25 @@
 <p>系数 <code>a</code> 和 <code>b</code> 可以通过<strong>最小二乘法</strong>（即让所有pairs带入线性表达式等号两边的方差和最小）获得。</p>
 <h3 id="最小二乘法（Least-Squares）"><a href="#最小二乘法（Least-Squares）" class="headerlink" title="最小二乘法（Least Squares）"></a>最小二乘法（Least Squares）</h3><p>最小二乘法最重要的应用是在曲线拟合上。最小平方所包含的最佳拟合，即残差（观测值与模型提供的拟合值之间的差距）平方总和的最小化。当问题在自变量（x变量）有重大不确定性时，那么使用简易回归和最小二乘法会发生问题；在这种情况下，须另外考虑变量-误差-拟合模型所需的方法，而不是最小二乘法。</p>
 <p><strong>Example:</strong><br>某次实验得到了四个数据点:</p>
-<p>$$<br>{\displaystyle (x,y)}： {\displaystyle (1,6)}、 {\displaystyle (2,5)}、 {\displaystyle (3,7)}、 {\displaystyle (4,10)}<br>$$</p>
-<p>我们希望找出一条和这四个点最匹配的直线:</p>
-<p>$$<br>y=\beta _{1}+\beta _{2}x<br>$$</p>
-<p>即找出在某种 <strong>“最佳情况”</strong> 下能够大致符合如下超定线性方程组的参数：</p>
-<p>$$<br>\beta _{1}+1\beta _{2} = 6 \<br>\beta _{1}+2\beta _{2} = 5 \<br>\beta _{1}+3\beta _{2} = 7 \<br>\beta _{1}+4\beta _{2} = 10<br>$$</p>
-<p>最小二乘法的思路是让等号的两边方差最小。也就是说此时能够算出下面这个函数的最小值：</p>
-<p>$$<br>S(\beta _{1}, \beta _{2})=[6-(\beta _{1}+1\beta _{2})]^2+[5-(\beta _{1}+2\beta _{2})]^2+[7-(\beta _{1}+3\beta _{2})]^2+[10-(\beta _{1}+4\beta _{2})]^2<br>$$</p>
-<p>求解的过程可以通过对S分别对两个参数做偏导数，然后让他们等于0:</p>
-<p>$$<br>{\frac  {\partial S}{\partial \beta _{1}}}=0=8\beta _{1}+20\beta _{2}-56 \<br>{\frac  {\partial S}{\partial \beta _{2}}}=0=20\beta _{1}+60\beta _{2}-154.<br>$$</p>
-<p>此时可以求解出：</p>
-<p>$$<br>\beta _{1}=3.5 \<br>\beta _{2}=1.4<br>$$</p>
-<p>也就是说直线方程：</p>
-<p>$$<br>y = 3.5+1.4x<br>$$</p>
-<p>为最佳解。</p>
+<script type="math/tex; mode=display">
+{\displaystyle (x,y)}： {\displaystyle (1,6)}、 {\displaystyle (2,5)}、 {\displaystyle (3,7)}、 {\displaystyle (4,10)}</script><p>我们希望找出一条和这四个点最匹配的直线:</p>
+<script type="math/tex; mode=display">
+y=\beta _{1}+\beta _{2}x</script><p>即找出在某种 <strong>“最佳情况”</strong> 下能够大致符合如下超定线性方程组的参数：</p>
+<script type="math/tex; mode=display">
+\beta _{1}+1\beta _{2} = 6 \\
+\beta _{1}+2\beta _{2} = 5 \\
+\beta _{1}+3\beta _{2} = 7 \\
+\beta _{1}+4\beta _{2} = 10</script><p>最小二乘法的思路是让等号的两边方差最小。也就是说此时能够算出下面这个函数的最小值：</p>
+<script type="math/tex; mode=display">
+S(\beta _{1}, \beta _{2})=[6-(\beta _{1}+1\beta _{2})]^2+[5-(\beta _{1}+2\beta _{2})]^2+[7-(\beta _{1}+3\beta _{2})]^2+[10-(\beta _{1}+4\beta _{2})]^2</script><p>求解的过程可以通过对S分别对两个参数做偏导数，然后让他们等于0:</p>
+<script type="math/tex; mode=display">
+{\frac  {\partial S}{\partial \beta _{1}}}=0=8\beta _{1}+20\beta _{2}-56 \\
+{\frac  {\partial S}{\partial \beta _{2}}}=0=20\beta _{1}+60\beta _{2}-154.</script><p>此时可以求解出：</p>
+<script type="math/tex; mode=display">
+\beta _{1}=3.5 \\
+\beta _{2}=1.4</script><p>也就是说直线方程：</p>
+<script type="math/tex; mode=display">
+y = 3.5+1.4x</script><p>为最佳解。</p>
 <h2 id="逻辑回归（Logistic-Regression）"><a href="#逻辑回归（Logistic-Regression）" class="headerlink" title="逻辑回归（Logistic Regression）"></a>逻辑回归（Logistic Regression）</h2><p>逻辑回归虽然名字中带有<strong>回归</strong>字样，但其实是一个<strong>分类</strong>算法而不是回归算法。该算法根据已知的一系列因变量估计<strong>离散的数值</strong>（0或1，代表假和真）。该算法通过将数据拟合进一个逻辑函数来预估一个事件发生的<strong>概率</strong>。由于其估计的对象是概率，所以输出的值大都在0和1之间。</p>
 <p>逻辑回归通常用于解决二分类的问题，例如判断人是男是女等。逻辑回归就是通过人的一些基本性状特征来判断属于男女的概率。</p>
 <p>从数学角度看，几率的对数使用的是<strong>预测变量的线性组合</strong>模型。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Probability of event occurence / not occurence</span></span><br><span class="line">odds = p / (<span class="number">1</span> - p)</span><br><span class="line">ln(odds) = ln(p / (<span class="number">1</span> - p))</span><br><span class="line">logit(p) = ln(p / (<span class="number">1</span> - p)) = b0 + b1X1 + b2X2 + ... + bnXn</span><br></pre></td></tr></table></figure></p>
@@ -278,8 +283,9 @@
 <li>根据不同的决策属性，我们可以依次将输入进行分类，最终会得到一个标签（Label）。为了把总体分成不同组别，需要用到许多技术，比如<strong>Gini、Information Gain</strong> 和 <strong>Entropy</strong> 等。</li>
 </ul>
 <h3 id="基尼系数（Gini）"><a href="#基尼系数（Gini）" class="headerlink" title="基尼系数（Gini）"></a>基尼系数（Gini）</h3><p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/ltVHIxt.png" class="lazyload"></p>
-<p>图中的实际分配曲线（红线）和绝对平衡线（绿线）之间的<strong>面积</strong>为A，和绝对不平衡线（蓝线）之间的面积为B，则横纵坐标之间的比例的<strong>Gini系数</strong>为：<br>$$<br>{A \over A + B}<br>$$</p>
-<ul>
+<p>图中的实际分配曲线（红线）和绝对平衡线（绿线）之间的<strong>面积</strong>为A，和绝对不平衡线（蓝线）之间的面积为B，则横纵坐标之间的比例的<strong>Gini系数</strong>为：</p>
+<script type="math/tex; mode=display">
+{A \over A + B}</script><ul>
 <li>A为零时，Gini系数为0，表示完全平衡。B为零时，Gini系数为1，表示完全不平衡。</li>
 </ul>
 <p>在选择样本的时候，如果Gini系数越小，说明数据的纯度越高，例如：给出西瓜的数据，这些数据的西瓜都是优质的西瓜，那么pk=1，从而得到Gini = 0。在决策树分裂过程中，我们会尽量选择Gini系数小的特征属性进行分裂，但同时也需要考量树的复杂程度。</p>
@@ -288,17 +294,17 @@
 <ul>
 <li>以图中数据为例，要想知道信息增益，就必须先算出分类系的<strong>熵值（Entropy）</strong>。最终结果的label是yes或者no，所以统计数量之后共有9个yes和5个no。这时候<strong>P（“yes”） = 9 / 14，P（“no”） = 5 / 14</strong>。这里的熵值计算公式为：</li>
 </ul>
-<p>$$<br>Entropy(S) = {-(9 / 14) <em> log _{2}(9 / 14) - (5 / 14) </em> log _{2}(5 / 14)}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Entropy(S) = {-(9 / 14) * log _{2}(9 / 14) - (5 / 14) * log _{2}(5 / 14)}</script><ul>
 <li>之后就可以计算每一个属性特征的信息增益（Gain）了。以wind属性为例，Wind为Weak的共有8条，其中yes的有6条，no的有2条；为Strong的共有6条，其中yes的有3条，no的也有3条。因此相应的熵值为：</li>
 </ul>
-<p>$$<br>Entropy(Weak) = {-(6 / 8) <em> log _{2}(6 / 8) - (2 / 8) </em> log _{2}(2 / 8)}<br>$$</p>
-<p>$$<br>Entropy(Strong) = {-(3 / 6) <em> log _{2}(3 / 6) - (3 / 6) </em> log _{2}(3 / 6)}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Entropy(Weak) = {-(6 / 8) * log _{2}(6 / 8) - (2 / 8) * log _{2}(2 / 8)}</script><script type="math/tex; mode=display">
+Entropy(Strong) = {-(3 / 6) * log _{2}(3 / 6) - (3 / 6) * log _{2}(3 / 6)}</script><ul>
 <li>现在就可以计算Wind属性的<strong>信息增益</strong>了：</li>
 </ul>
-<p>$$<br>Gain(Wind) = {Entropy(S) -(8 / 14) <em> Entropy(Weak) - (6 / 14) </em> Entropy(Strong)}<br>$$</p>
-<h3 id="决策树分类"><a href="#决策树分类" class="headerlink" title="决策树分类"></a>决策树分类</h3><ul>
+<script type="math/tex; mode=display">
+Gain(Wind) = {Entropy(S) -(8 / 14) * Entropy(Weak) - (6 / 14) * Entropy(Strong)}</script><h3 id="决策树分类"><a href="#决策树分类" class="headerlink" title="决策树分类"></a>决策树分类</h3><ul>
 <li>ID3： 采用信息增益选择最佳分裂子节点</li>
 <li>C4.5： 采用信息增益率（正规化）选择最佳分裂子节点</li>
 </ul>
@@ -364,8 +370,8 @@
 <h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><p><strong>SVM 优点</strong>：使用核函数可以提高维度，解决分线性分类问题、分类思路明确、分类效果较好。<br><strong>SVM 缺点</strong>：对大规模数据训练困难、难以很好地支持多分类。</p>
 <h2 id="朴素贝叶斯（Naive-Bayesian）"><a href="#朴素贝叶斯（Naive-Bayesian）" class="headerlink" title="朴素贝叶斯（Naive Bayesian）"></a>朴素贝叶斯（Naive Bayesian）</h2><p>在假设变量间<strong>相互独立</strong>的前提下，根据贝叶斯定理（Bayesian Theorem）可以推得朴素贝叶斯这个分类方法。通俗来说，一个朴素贝叶斯分类器假设分类的特性和其他特性不相关。朴素贝叶斯模型容易创建，而且在非监督式学习的大型数据样本集中非常有用，虽然简单，却能超越复杂的分类方法。其基本思想就是：对于给出的待分类项，求解<strong>在此项出现的条件下各个目标类别出现的概率</strong>，哪个最大，就认为此待分类项属于哪个类别。</p>
 <p>贝叶斯定理提供了从P（c）、P（x）和P（x | c）计算后验概率P（c | x）的方法:</p>
-<p>$$<br>P(c | x) = {P(x | c) P(c) \over P(x)}<br>$$</p>
-<p>式子中的变量表示如下：</p>
+<script type="math/tex; mode=display">
+P(c | x) = {P(x | c) P(c) \over P(x)}</script><p>式子中的变量表示如下：</p>
 <ul>
 <li>P（c | x）是已知预测变量（属性特征）的前提下，目标发生的后验概率。</li>
 <li>P（c）是目标发生的先验概率。</li>
@@ -386,27 +392,29 @@
 <li>此时给出测试资料，我们希望通过计算得到性别的后验概率从而判断样本的类型：</li>
 </ul>
 <p><strong>男子的后验概率</strong>:</p>
-<p>$$<br>Posterior(male) = {P(male) P(height | male) P(weight | male) P(footsize | male) \over evidence}<br>$$</p>
-<p><strong>女子的后验概率</strong>:</p>
-<p>$$<br>Posterior(female) = {P(female) P(height | female) P(weight | female) P(footsize | female) \over evidence}<br>$$</p>
-<p>证据因子（evidence）通常为常数，是用来对结果进行归一化的参数。</p>
-<p>$$<br>evidence=P(male)\,p(height|male)\,p(weight|male)\,p(footsize|male)+P(female)\,p(height|female)\,p(weight|female)\,p(footsize|female)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Posterior(male) = {P(male) P(height | male) P(weight | male) P(footsize | male) \over evidence}</script><p><strong>女子的后验概率</strong>:</p>
+<script type="math/tex; mode=display">
+Posterior(female) = {P(female) P(height | female) P(weight | female) P(footsize | female) \over evidence}</script><p>证据因子（evidence）通常为常数，是用来对结果进行归一化的参数。</p>
+<script type="math/tex; mode=display">
+evidence=P(male)\,p(height|male)\,p(weight|male)\,p(footsize|male)+P(female)\,p(height|female)\,p(weight|female)\,p(footsize|female)</script><ul>
 <li>因此我们可以计算出相应结果（这里为概率密度）：</li>
 </ul>
-<p>$$<br>P(height | male) = {1 \over \sqrt{2\pi\sigma^2}}exp({-(6 - \mu^2) \over 2\sigma^2}) \<br>P(weight | male) = …<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+P(height | male) = {1 \over \sqrt{2\pi\sigma^2}}exp({-(6 - \mu^2) \over 2\sigma^2}) \\
+P(weight | male) = ...</script><ul>
 <li><p>其中 <code>μ</code> 和 <code>σ</code> 分别指的是模型训练后的特征正态分布参数中间值和标准差。</p>
 </li>
 <li><p>最后假设初始条件为平衡条件：</p>
 </li>
 </ul>
-<p>$$<br>P(male) = P(female) = 0.5<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+P(male) = P(female) = 0.5</script><ul>
 <li>就可以得出后验概率:</li>
 </ul>
-<p>$$<br>Posterior Numerator(male) = {6.1984e^{-09}} \<br>Posterior Numerator(female) = {5.3778e^{-04}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Posterior Numerator(male) = {6.1984e^{-09}} \\
+Posterior Numerator(female) = {5.3778e^{-04}}</script><ul>
 <li>可以看出女性的概率较大，我们估计结果为女性。</li>
 </ul>
 <h3 id="优缺点-2"><a href="#优缺点-2" class="headerlink" title="优缺点"></a>优缺点</h3><p><strong>Naive Bayes优点：</strong> 对小规模表现好，可适用于多分类，增量式训练。<br><strong>Naive Bayes缺点：</strong> 对传入数据敏感（边缘不平滑）。</p>
@@ -423,12 +431,12 @@
 <li>越是<strong>干净</strong>的资料效果越好，如果存在偏离度较高的杂讯噪声，那么在类别判断时就会受到干扰。</li>
 </ul>
 <h3 id="欧式距离"><a href="#欧式距离" class="headerlink" title="欧式距离"></a>欧式距离</h3><p>空间中点X = （X1，X2，X3，…，Xn）与点Y = （Y1，Y2，Y3，…，Yn）的欧氏距离为：</p>
-<p>$$<br>d(x, y) := {\sqrt{(X1 - Y1)^2 + (X2 - Y2)^2 + … + (Xn - Yn)^2}}<br>$$</p>
-<h3 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h3><p>在平面上，坐标（X1，X2，…，Xn）的点和坐标（Y1，Y2，…，Yn）的点之间的曼哈顿距离为:</p>
-<p>$$<br>{|X1 - Y1| + |X2 - Y2| + … + |Xn - Yn|}<br>$$</p>
-<h3 id="明氏距离"><a href="#明氏距离" class="headerlink" title="明氏距离"></a>明氏距离</h3><p>两点 P = (X1，X2，…，Xn) 和 Q = （Y1，Y2，…，Yn）之间的明氏距离为:</p>
-<p>$$<br>{(|X1 - Y1|^p + |X2 - Y2|^p + … + |Xn - Yn|^p)^{1 \over p}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+d(x, y) := {\sqrt{(X1 - Y1)^2 + (X2 - Y2)^2 + ... + (Xn - Yn)^2}}</script><h3 id="曼哈顿距离"><a href="#曼哈顿距离" class="headerlink" title="曼哈顿距离"></a>曼哈顿距离</h3><p>在平面上，坐标（X1，X2，…，Xn）的点和坐标（Y1，Y2，…，Yn）的点之间的曼哈顿距离为:</p>
+<script type="math/tex; mode=display">
+{|X1 - Y1| + |X2 - Y2| + ... + |Xn - Yn|}</script><h3 id="明氏距离"><a href="#明氏距离" class="headerlink" title="明氏距离"></a>明氏距离</h3><p>两点 P = (X1，X2，…，Xn) 和 Q = （Y1，Y2，…，Yn）之间的明氏距离为:</p>
+<script type="math/tex; mode=display">
+{(|X1 - Y1|^p + |X2 - Y2|^p + ... + |Xn - Yn|^p)^{1 \over p}}</script><ul>
 <li>其中p取1时为曼哈顿距离，p取2时为欧氏距离。</li>
 </ul>
 <h3 id="汉明距离"><a href="#汉明距离" class="headerlink" title="汉明距离"></a>汉明距离</h3><p>对于固定长度n，汉明距离是该长度字符串向量空间上的度量，即表示长度n中不同字符串的个数。</p>
@@ -570,8 +578,8 @@
 <li><strong>神经网络</strong>：卷积神经网络利用批量过滤的方式，在大范围的信号中不断收集信息，每一次得到的区域信息都是区域中的一小块，之后从这些信息中总结出一些所谓的边缘信号（edges，例如：竖线，横线，斜线，圆圈等基本边缘，其可能分别代表人脸眼睛的左上角，中间，右上角等等部位的区域信息）。同样，用相同的方式从边缘信息组合的图像中总结出更大范围的边缘信息（例如：利用竖线，横线，圆圈等结构组合出整个眼睛）。最后将得到的结果传入全连接层的分类神经网络中就能得到相应的label了。</li>
 </ul>
 <p><strong>Example：</strong><br>如果以灰阶图像为例，其高度为1，fsize = 5。此时ksize = 3, strides = 1。那么结果为一个reshape_size = 3的图像。</p>
-<p>$$<br>rsize = {fsize - ksize + 2* padding \over strides} + 1<br>$$</p>
-<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/HbnsG7v.png" class="lazyload"></p>
+<script type="math/tex; mode=display">
+rsize = {fsize - ksize + 2* padding \over strides} + 1</script><p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/HbnsG7v.png" class="lazyload"></p>
 <ul>
 <li>卷积的过程就是将物件的特征值（图像多为基本颜色）拆分成小块区域，然后计算其中<strong>各个特征值</strong>的和。最后输出为一个压缩后的图像。如上图，以0为黑色，1为白色，那么求得的最后图像中每一个方格的值就是kernel中所有格子数的加权和。</li>
 </ul>
@@ -706,8 +714,9 @@
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/7NxbFvF.jpg" class="lazyload"></p>
 <p>图中的二次元人物是通过GAN神经网络的学习，然后利用描述性的选项组合，来生成不同特征的人物图像的一个神经网络网络应用。</p>
 <h1 id="理解神经网络的“-黑盒子-”"><a href="#理解神经网络的“-黑盒子-”" class="headerlink" title="理解神经网络的“ 黑盒子 ”"></a>理解神经网络的“ 黑盒子 ”</h1><p>神经网络的成功之处在于它能够从输入和输出的数据中总结出一个抽象的算法函式，基于这个函式的关系我们就能够对未知的数据进行预测。</p>
-<p>例如：<br>$$<br>y = {ax + b \over 2}<br>$$</p>
-<p>这个就相当于一个已经训练好的神经网络模型，对于输入信号<code>X</code>通过网络的处理之后得到输出结果<code>Y</code>。</p>
+<p>例如：</p>
+<script type="math/tex; mode=display">
+y = {ax + b \over 2}</script><p>这个就相当于一个已经训练好的神经网络模型，对于输入信号<code>X</code>通过网络的处理之后得到输出结果<code>Y</code>。</p>
 <p>而神经网络建立的模型就像是把算法公式中所有参数进行一个<strong>封装</strong>，然后开放一个相应的<strong>接口(Interface)</strong>用于呼叫和取值。因此神经网络也被亲切地称之为 <strong>“ 黑匣子 ”</strong> 。</p>
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/U5riVAp.png" class="lazyload"></p>
 <ul>
@@ -750,8 +759,8 @@
 <ul>
 <li>先前说过神经网络的自我调整是基于结果的反馈，也就是所谓的误差来修正自己：</li>
 </ul>
-<p>$$<br>Cost = {(predicted - real)^2}<br>$$</p>
-<p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/jwReIP2.png" class="lazyload"></p>
+<script type="math/tex; mode=display">
+Cost = {(predicted - real)^2}</script><p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/jwReIP2.png" class="lazyload"></p>
 <ul>
 <li>Cost函式表达的结果近似可以看成一条平滑的二次曲线，而在更高纬度的层面上就是一个<strong>弯曲的面</strong>，越是接近曲面的底部，误差的Cost就会越小。而梯度下降（Gradient Descent）就是在这个曲面中通过微分的方式找到一个能够向最低点移动的方向，并以此作为动力开始优化自己。当达到最低点时，求导的结果和二次曲线相切，这个时候梯度就消失了，也就是所谓的最佳化状态。</li>
 </ul>
@@ -792,7 +801,9 @@
 <li>比较常用来解决Overfitting的方式为<strong>Dropout</strong>，也就是在训练的过程中随机舍弃掉一些数据，从而让自己的模型留有一些变通的空间，来适应突发的情况。</li>
 </ul>
 <h1 id="为什么要对特征进行标准化（Normalization）"><a href="#为什么要对特征进行标准化（Normalization）" class="headerlink" title="为什么要对特征进行标准化（Normalization）"></a>为什么要对特征进行标准化（Normalization）</h1><p>现实中的数据可能来自不同的地方，不同来源的数据有各自的取值范围。而在学习的过程中，这些取值范围往往<strong>差距悬殊</strong>，这样就会对训练产生障碍。想象一下，如果我们两个权重矩阵M1和M2,我们给M1一个三位数量级的输入参数，给M2一个一位数量级的输入参数，会发生什么事情呢？答案很明显，当我们改变M1的参数时，对于总体的影响是十分巨大的，而相比之下想要达到这样的差距，就必须对M2进行很大幅度的调整。</p>
-<h2 id="如何标准化"><a href="#如何标准化" class="headerlink" title="如何标准化"></a>如何标准化</h2><p>延续之前的例子，如果这时候的误差值是：<br>$$<br>Error = {predicted - real}<br>$$<br>那么对这个误差我们应该确保对所有的权重矩阵（Weight Matrix）具有类似的跨度。</p>
+<h2 id="如何标准化"><a href="#如何标准化" class="headerlink" title="如何标准化"></a>如何标准化</h2><p>延续之前的例子，如果这时候的误差值是：</p>
+<script type="math/tex; mode=display">
+Error = {predicted - real}</script><p>那么对这个误差我们应该确保对所有的权重矩阵（Weight Matrix）具有类似的跨度。</p>
 <p>通常用于标准化（Normalization）的方法有两种：</p>
 <ul>
 <li><p>一种是<strong>最小-最大标准化（Minmax Normalization）</strong>。它会将所有的数据按照一个缩放比例转换到0和1的区间中。对单独的特征而言，这个权重是唯一的（全局适用）。</p>
@@ -872,12 +883,12 @@
 <ul>
 <li>我们可以用一个式子来统一描述神经网络的流程：</li>
 </ul>
-<p>$$<br>y = Wx<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+y = Wx</script><ul>
 <li>而这个时候的模型就是线性的，我们需要借助Activation Function的力量来 <strong>“掰弯”</strong> 这个线性的模型。</li>
 </ul>
-<p>$$<br>y = AF(Wx)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+y = AF(Wx)</script><ul>
 <li>新的模型表示式中的 <strong>AF</strong> 就是我们的Activation Function。其实 <strong>AF</strong> 的作用并没有想象的那么奇幻，它就是一些非线性方程的集合：</li>
 </ul>
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/m3ozi0z.png" class="lazyload"></p>
@@ -919,7 +930,15 @@
 <li>其次就是利用正规化（Regularization）</li>
 </ul>
 <p>主要用于解决机器学习过拟合的正规化方法包括了 <strong>L1</strong> 和 <strong>L2</strong> 正规化。</p>
-<p>针对机器学习，我们之前将这个过程简化成：<br>$$<br>y = Wx<br>$$<br>而其中的 <strong>W</strong> 就是我们模型所要学习的参数，过拟合的出现就是模型对于 W 的值进行了太大幅度的调整。为了避免这个问题，我们会对这个变化进行一个惩罚，也就是约束的机制。原始的误差<strong>cost</strong>为：<br>$$<br>cost = (Wx - real y)^2<br>$$<br>如果 W 变化太大，我们就让cost也跟着变大，也就是 L1 正规化：<br>$$<br>cost = (Wx - real y)^2 + abs(W)<br>$$<br>L2 正规化和L1类似，只是在惩罚项的不同：<br>$$<br>cost = (Wx - real y)^2 + (W)^2<br>$$<br>用这些方法我们就可以保证得到的模型曲线不会因为数据的关系而变得那么扭曲。</p>
+<p>针对机器学习，我们之前将这个过程简化成：</p>
+<script type="math/tex; mode=display">
+y = Wx</script><p>而其中的 <strong>W</strong> 就是我们模型所要学习的参数，过拟合的出现就是模型对于 W 的值进行了太大幅度的调整。为了避免这个问题，我们会对这个变化进行一个惩罚，也就是约束的机制。原始的误差<strong>cost</strong>为：</p>
+<script type="math/tex; mode=display">
+cost = (Wx - real y)^2</script><p>如果 W 变化太大，我们就让cost也跟着变大，也就是 L1 正规化：</p>
+<script type="math/tex; mode=display">
+cost = (Wx - real y)^2 + abs(W)</script><p>L2 正规化和L1类似，只是在惩罚项的不同：</p>
+<script type="math/tex; mode=display">
+cost = (Wx - real y)^2 + (W)^2</script><p>用这些方法我们就可以保证得到的模型曲线不会因为数据的关系而变得那么扭曲。</p>
 <ul>
 <li>最后是一种经常用在神经网络训练过程中的方式，叫做Dropout Regularization。</li>
 </ul>
@@ -934,14 +953,14 @@
 <li><p>训练的过程中我们利用反向传递的误差来调整参数，而误差的值反应为：</p>
 </li>
 </ul>
-<p>$$<br>Cost(\theta) = [Y\theta(x) - Y] ^ 2<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Cost(\theta) = [Y\theta(x) - Y] ^ 2</script><ul>
 <li>L1、L2正规化就是在这个误差的情况下多加上了一个误差，也称作<strong>对真实结果的惩罚:</strong></li>
 </ul>
-<p>$$<br>Cost(\theta) = [Y\theta(x) - Y] ^ 2 + [\theta1 ^ 2 + \theta2 ^ 2 + …]<br>$$</p>
-<p>或</p>
-<p>$$<br>Cost(\theta) = [Y\theta(x) - Y] ^ 2 + [|\theta1| + |\theta2| + …]<br>$$</p>
-<p>通俗的来说现在我们的误差不再是我们理解中的结果和真实值得差距了，还包括了<strong>新的误差项</strong>，也就是那些用来拟合的参数所拥有的<strong>权重大小</strong>。如果是对平方项的惩罚就是L2正规化，如果是绝对值则是L1正规化。</p>
+<script type="math/tex; mode=display">
+Cost(\theta) = [Y\theta(x) - Y] ^ 2 + [\theta1 ^ 2 + \theta2 ^ 2 + ...]</script><p>或</p>
+<script type="math/tex; mode=display">
+Cost(\theta) = [Y\theta(x) - Y] ^ 2 + [|\theta1| + |\theta2| + ...]</script><p>通俗的来说现在我们的误差不再是我们理解中的结果和真实值得差距了，还包括了<strong>新的误差项</strong>，也就是那些用来拟合的参数所拥有的<strong>权重大小</strong>。如果是对平方项的惩罚就是L2正规化，如果是绝对值则是L1正规化。</p>
 <ul>
 <li>那么这些惩罚又能对结果产生怎么样的影响呢？以L2正规化为例：</li>
 </ul>
@@ -966,8 +985,8 @@
 <li><p>为了控制正规化的强度会加入一些限制参数来平衡这个惩罚机制的强弱。</p>
 </li>
 </ul>
-<p>$$<br>Cost(\theta) = [Y\theta(x) - Y] ^ 2 + \lambda * \Sigma\theta i ^ p<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Cost(\theta) = [Y\theta(x) - Y] ^ 2 + \lambda * \Sigma\theta i ^ p</script><ul>
 <li>我们会利用Cross Validation的方式来训练和选取最佳的参数，从而得到更好的正规化结果。</li>
 </ul>
 <h1 id="如何加速神经网络"><a href="#如何加速神经网络" class="headerlink" title="如何加速神经网络"></a>如何加速神经网络</h1><p>不难想象，越是复杂的神经网络结构和越大的数据量，就会让神经网络的训练过程花费更多的时间。原因是计算量和复杂度太高了，可是在解决一些复杂问题时，我们所需要的结构恰恰又是以这样的形式出现，因此我们就需要一些特殊的方法来让神经网络的训练得到 <strong>优化和提升</strong>。</p>
@@ -981,43 +1000,43 @@
 <ul>
 <li>传统的参数更新方法是利用误差的反向传递，让参数的误差值乘上一个学习效率来进行更新的：</li>
 </ul>
-<p>$$<br>W += -Learning\ rate * dx<br>$$</p>
-<p>而这种方法会让收敛的过程曲折无比，就像是一个喝醉的人摇摇晃晃地行走一般，在到达目的地的过程中往往需要走许多弯路。</p>
+<script type="math/tex; mode=display">
+W += -Learning\ rate * dx</script><p>而这种方法会让收敛的过程曲折无比，就像是一个喝醉的人摇摇晃晃地行走一般，在到达目的地的过程中往往需要走许多弯路。</p>
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/Hkf06zD.png" class="lazyload"></p>
 <ul>
 <li>为了防止这种不必要的更新误差，我们会选择使用 <strong>动量（Momentum）</strong> 的形式来优化误差更新方法。</li>
 </ul>
-<p>$$<br>m = b1 <em> m - Learning\ rate </em> dx<br>$$</p>
-<p>$$<br>W += m<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+m = b1 * m - Learning\ rate * dx</script><script type="math/tex; mode=display">
+W += m</script><ul>
 <li>动量的使用就仿佛给这个误差一个 <strong>向下冲的初始速度</strong>，让他在前进的时候有一个<strong>惯性</strong>的作用。打个比方也就是原先喝醉酒的人走到了一个下坡，他就会改变摇晃的行走方式，转而变成拥有向下冲的一个趋势。</li>
 </ul>
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/JPj4brY.png" class="lazyload"></p>
 <ul>
 <li>与动量（Momentum）类似的优化方式还包括 <strong>AdaGrad</strong>，这种优化的方式是通过给予参数优化一个限制，让他在学习的过程中因为走弯路而受到一定的惩罚，从而减少这种行为的发生。</li>
 </ul>
-<p>$$<br>v += dx ^ 2<br>$$</p>
-<p>$$<br>W += {-Learning\ rate * dx \over \sqrt{v}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+v += dx ^ 2</script><script type="math/tex; mode=display">
+W += {-Learning\ rate * dx \over \sqrt{v}}</script><ul>
 <li>AdaGrad的形式就仿佛给喝醉酒的人一双鞋子，在他摇晃前行的过程中由于鞋子的摩擦而脚疼，从而让他避开这种行走方式，转而走直线。</li>
 </ul>
 <p>那么不妨试想一下如果将动量和AdaGrad两者<strong>结合</strong>起来，效果是不是会更好呢？的确，结合了两者的方法被称为 <strong>RMSProp</strong>。</p>
 <ul>
 <li>RMSProp结合了两者的优势，从而共同优化神经网络的参数计算：</li>
 </ul>
-<p>$$<br>v = b1 <em> v + (1 - b1) </em> dx ^ 2<br>$$</p>
-<p>$$<br>W += {-Learning\ rate * dx \over \sqrt{v}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+v = b1 * v + (1 - b1) * dx ^ 2</script><script type="math/tex; mode=display">
+W += {-Learning\ rate * dx \over \sqrt{v}}</script><ul>
 <li>而在RMSProp保留两者的有点过程中，神经网络由于动量的加速和AdaGrad的惩罚限制，变得能够走出较为理想的直线了。但是可能不难发现，在结合两个优化形式的过程中，RMSProp似乎并没有完全地将二者进行合并，从公式中可以看出，它似乎抛弃了重复的学习更新作用项 <strong>dx</strong> 在m上的作用。</li>
 </ul>
 <p>而 <strong>Adam</strong> 的优化方式则完全融合了动量（Momentum）和AdaGrad的数学形式，将他们完全融入神经网络的训练优化参数的过程中来。</p>
 <ul>
 <li>Adam的参数学习率公式如下：</li>
 </ul>
-<p>$$<br>m = b1 <em> m + (1 - b1) </em> dx<br>$$</p>
-<p>$$<br>v = b2 <em> v + (1 - b2) </em> dx ^ 2<br>$$</p>
-<p>$$<br>W += {- Learning\ rate * m \over \sqrt{v}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+m = b1 * m + (1 - b1) * dx</script><script type="math/tex; mode=display">
+v = b2 * v + (1 - b2) * dx ^ 2</script><script type="math/tex; mode=display">
+W += {- Learning\ rate * m \over \sqrt{v}}</script><ul>
 <li>就这样，在计算m时将动量优化考虑进去，在计算v时将AdaGrad优化考虑进去，而在最后计算参数的时候将m和v一起考虑进去，这样就能将两者完全结合近神经网络的优化过程中了。</li>
 </ul>
 <p>事实证明在大多数神经网络的训练过程中，<strong>Adam Optimizer</strong> 都能让网络迅速收敛，达到目标。</p>
@@ -1032,11 +1051,11 @@
 </li>
 </ul>
 <p>以一个例子来说，假定我们的正类有10个，负类只有4个，此时我们的预测结果为10个正类被判断为10个正类，4个负类被判断为2个正类和2个负类。那么通过Confusion Matrix我们可以计算出TP（正类别猜正类别）、FP（负类别却猜是正类别）、TN、FN四个值。TP = 10，FP = 2，TN = 2，FN = 0;这时候的：</p>
-<p>$$<br>Precision = {TP \over {TP + FP}} = 0.833<br>$$</p>
-<p>$$<br>Recall = {TP \over {TP + FN}} = 1<br>$$</p>
-<p>因此F1 score可以表示成：</p>
-<p>$$<br>F1 = {2Precision * Recall \over {Precision + Recall}} = 90.9\%<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Precision = {TP \over {TP + FP}} = 0.833</script><script type="math/tex; mode=display">
+Recall = {TP \over {TP + FN}} = 1</script><p>因此F1 score可以表示成：</p>
+<script type="math/tex; mode=display">
+F1 = {2Precision * Recall \over {Precision + Recall}} = 90.9\%</script><ul>
 <li><p>第三种方式就是重新组合数据，让数据保持均衡分布。例如砍掉一些数量较多的资料，让二者的数量保持在一个稳定的比例上，或者利用复制和组合的方式增加少数类别的资料数量，使他们比例重新稳定。</p>
 </li>
 <li><p>第四种方式是使用其他的机器学习方法：</p>
@@ -1102,12 +1121,12 @@
 <ul>
 <li>学习过程最开始的时候，我们会对Q表进行一个初始化，对每一个状态下的所有行为进行一个估计的价值分数。而此时状态为S1的时候，我们通过初始化的价值分数进行第一步行为的决策，然后到达S2状态。此时我们需要<strong>通过S2的状态好坏来给予S1的行为一个反馈</strong>，此时我们会假象自己选择了S2的不同行为，并得到了相应的奖励R。这个时候我们就能够通过：</li>
 </ul>
-<p>$$<br>Real(S1, a2) = R + \gamma * max(S2)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Real(S1, a2) = R + \gamma * max(S2)</script><ul>
 <li>来得到S1在环境反馈后真实的价值分数，这个时候就能够通过计算误差：</li>
 </ul>
-<p>$$<br>Cost = Real(S1, a2) - Estimate(S1, a2)<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+Cost = Real(S1, a2) - Estimate(S1, a2)</script><ul>
 <li>然后利用类似于Back-Propagation的方式将误差传递回去，进而利用学习效率更新原有的价值分数。</li>
 </ul>
 <p><strong>Tips</strong>：如果此时的S2并不是最终的结果，而且使用的Q Learning由限定为回合更新的话，那么此时的R并不会在这个时刻体现出来。因此S1更新所需要的Real（S1，a2）会来自之后所有state的结果总和，也就是一个<strong>迭代</strong>的过程。</p>
@@ -1122,8 +1141,8 @@
 <li><p>γ则是对未来奖励的一个衰减值。假设我们的Q表分成很多个States，那么从第一个State开始就会累积今后的Reward值：</p>
 </li>
 </ul>
-<p>$$<br>Q(S1) = r2 + γQ(S2) = r2 + γ[r3 + Q(S3)] = … = r2 + γ*r3 + γ^2r4 + γ^3r5+…<br>$$</p>
-<p>就如下图所示:</p>
+<script type="math/tex; mode=display">
+Q(S1) = r2 + γQ(S2) = r2 + γ[r3 + Q(S3)] = ... = r2 + γ*r3 + γ^2r4 + γ^3r5+...</script><p>就如下图所示:</p>
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/gh6GdXl.png" class="lazyload"></p>
 <p>因为γ是一个介于0和1的值，那么不妨想象一下这个时候的γ = 1，此时所有的r都被保留了下来，因此我们的模型就会考虑到当下行为对所有未来的状态所获得的奖励。另外如果γ = 0时，此时只有r2还存在，我们的模型就只考虑到下一步行为对此刻造成的奖励而已。以此类推，γ &lt; 1可以得知越往后的奖励对当下的行为决定得越浅，因此γ也被称为奖励的<strong>衰减值</strong>。</p>
 <h3 id="Sarsa"><a href="#Sarsa" class="headerlink" title="Sarsa"></a>Sarsa</h3><p>强化学习中的Sarsa和Q Learning十分相近。Sarsa也是通过Q Table中的值来对下一步的行为做出估计的，数值越大行为的可能性就越大，Sarsa也是通过这种方式来从环境中获得Rewards的。与Q Learning不同之处在于它们对模型的<strong>更新方式</strong>。</p>
@@ -1223,7 +1242,7 @@
 </li>
 </ul>
 <h3 id="Asynchronous-Advantage-Actor-Critic-A3C"><a href="#Asynchronous-Advantage-Actor-Critic-A3C" class="headerlink" title="Asynchronous Advantage Actor-Critic(A3C)"></a>Asynchronous Advantage Actor-Critic(A3C)</h3><p>A3C是一种用来提升强化学习效率的一种算法，它的精髓是能够让强化学习的模型通过分裂从而在同一个时刻学习不同的经验，然后总结之后得到完整的学习结果，这也是其中Asynchronous的含义。</p>
-<p>假设现在为了获得Reward我们有16中不同的行为方式能够选择，那么不妨想想我们能够将这16中行为分成4*4的状态<strong>分散</strong>放置在一个同样的环境中。让它们自我学习，最后将结果也就是学习的经验汇总到一个统一的网络中进行更新，这样就能大大地提升学习效率了。</p>
+<p>假设现在为了获得Reward我们有16中不同的行为方式能够选择，那么不妨想想我们能够将这16中行为分成4<em>4的状态<em>*分散</em></em>放置在一个同样的环境中。让它们自我学习，最后将结果也就是学习的经验汇总到一个统一的网络中进行更新，这样就能大大地提升学习效率了。</p>
 <p><img src="/images/placeholder.png" alt="" data-src="https://i.imgur.com/h29rcR1.png" class="lazyload"></p>
 <p>如果计算机拥有多核心处理特性，那么A3C绝对是提升训练效率的一个方式。类似于多线程的概念，能够在同一时刻平行地处理多种可能性，而A3C的强化学习模组使用的是Actor-Critic，能够在异步有效更新Actor的行为状态，然后<strong>汇总</strong>到统一的模型中，模型会总结完所有异步状态的结果，整合之后再<strong>将这个秘籍（加总的结果）传递给每一个子模型（一个类似Map-Reduce的概念）</strong>。</p>
 <h3 id="Why-AlphaGo-Zero-so-powerful"><a href="#Why-AlphaGo-Zero-so-powerful" class="headerlink" title="Why AlphaGo Zero so powerful"></a>Why AlphaGo Zero so powerful</h3><p>2017年10月19日Google Deep Mind发布了新一轮的围棋人工智能——AplhaGo Zero。那么这个技术在机器学习方面又是利用了什么样的方式从而在策略上战胜人类呢？答案很简单，就是<strong>多元计划</strong>。</p>
@@ -1447,12 +1466,12 @@
     <nav class="pf-paginator">
       
          
-          <a href="/2018/08/06/introduction-tensorflow/" data-hover="Tensorflow入门">上一篇</a>      
+          <a href="/2018/08/06/introduction-tensorflow/" data-hover="Tensorflow入门">Prev</a>      
             
         
       
         
-        <a href="/2018/08/03/hexo-blog/" data-hover="Hexo-blog搭建教程"> 下一篇</a>
+        <a href="/2018/08/03/hexo-blog/" data-hover="Hexo-blog搭建教程"> Next</a>
             
   </nav>   
   </div>
@@ -1492,7 +1511,7 @@
     
     <div class="search-container sildeUpMin">
         <div class="search-header">
-            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
             <span class="search-cancel iconfont icon-cancel"></span>
         </div>
         <div id="search-result" class="search-result"></div>
@@ -1507,49 +1526,36 @@
          
             
 
-            <a class="mobile-menu-link" href="/">首页
+            <a class="mobile-menu-link" href="/">Home
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/archives">归档
+            <a class="mobile-menu-link" href="/archives">Archives
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/tags">标签
+            <a class="mobile-menu-link" href="/tags">Tags
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/about">关于
+            <a class="mobile-menu-link" href="/about">About
             </a>
             
          
                           
 
-            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
             
          
       
 </div>        
     
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
 
 
 
@@ -1584,23 +1590,6 @@ var _hmt = _hmt || [];
 
   
 
-    <script src="/nayo.bundle.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->           
+    <script src="/nayo.bundle.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->           
   </body>        
 </html>

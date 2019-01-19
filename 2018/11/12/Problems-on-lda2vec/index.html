@@ -28,25 +28,25 @@
               
             
 
-              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
+              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
+              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
 
             
             
@@ -88,7 +88,7 @@
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			2868
+			2864
 		</span>
 	
 </div>
@@ -124,19 +124,15 @@
 </ul>
 <blockquote>
 <p><a href="https://github.com/cemoody/lda2vec/issues/45" target="_blank" rel="noopener">https://github.com/cemoody/lda2vec/issues/45</a><br><a href="https://github.com/cemoody/lda2vec/pull/46" target="_blank" rel="noopener">https://github.com/cemoody/lda2vec/pull/46</a><br><a href="https://github.com/gfairchild/pyxDamerauLevenshtein/blob/f657916e4b0db18935c9e32f7dd3c98df95bc15a/CHANGES.md#L5" target="_blank" rel="noopener">https://github.com/gfairchild/pyxDamerauLevenshtein/blob/f657916e4b0db18935c9e32f7dd3c98df95bc15a/CHANGES.md#L5</a></p>
-</blockquote>
 <h3 id="Train"><a href="#Train" class="headerlink" title="Train"></a>Train</h3><ul>
 <li>You may need to confirm that “dill” is installed<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install dill</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<blockquote>
 <p><a href="https://stackoverflow.com/questions/51597073/python-no-module-named-dill-while-using-pickle-load" target="_blank" rel="noopener">https://stackoverflow.com/questions/51597073/python-no-module-named-dill-while-using-pickle-load</a></p>
 <ul>
 <li>You will need to downgrade chainer to version 1.24.0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install chainer==1.24.0</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-</blockquote>
-<blockquote>
 <p><a href="https://github.com/chainer/chainer/issues/4708" target="_blank" rel="noopener">https://github.com/chainer/chainer/issues/4708</a></p>
 <ul>
 <li>You must change a code in lda2vec’s preprocessing.py, then re-run “python setup.py install”<br>Overwrite or replace the original function<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tokenize</span><span class="params">(texts, max_length, skip=<span class="number">-2</span>, attr=LOWER, merge=False, nlp=None, **kwargs)</span>:</span></span><br><span class="line">    <span class="string">""""""</span></span><br><span class="line">    <span class="keyword">if</span> nlp <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        nlp = English()</span><br><span class="line">    data = np.zeros((len(texts), max_length), dtype=<span class="string">'int32'</span>)</span><br><span class="line">    data[:] = skip</span><br><span class="line">    bad_deps = (<span class="string">'amod'</span>, <span class="string">'compound'</span>)</span><br><span class="line">    <span class="keyword">for</span> row, doc <span class="keyword">in</span> enumerate(nlp.pipe(texts, **kwargs)):</span><br><span class="line">        <span class="keyword">if</span> merge:</span><br><span class="line">            <span class="comment"># from the spaCy blog, an example on how to merge</span></span><br><span class="line">            <span class="comment"># noun phrases into single tokens</span></span><br><span class="line">            <span class="keyword">for</span> phrase <span class="keyword">in</span> doc.noun_chunks:</span><br><span class="line">                <span class="comment"># Only keep adjectives and nouns, e.g. "good ideas"</span></span><br><span class="line">                <span class="keyword">while</span> len(phrase) &gt; <span class="number">1</span> <span class="keyword">and</span> phrase[<span class="number">0</span>].dep_ <span class="keyword">not</span> <span class="keyword">in</span> bad_deps:</span><br><span class="line">                    phrase = phrase[<span class="number">1</span>:]</span><br><span class="line">                <span class="keyword">if</span> len(phrase) &gt; <span class="number">1</span>:</span><br><span class="line">                    <span class="comment"># Merge the tokens, e.g. good_ideas</span></span><br><span class="line">                    phrase.merge(phrase.root.tag_, phrase.text,</span><br><span class="line">                                 phrase.root.ent_type_)</span><br><span class="line">            <span class="comment"># Iterate over named entities</span></span><br><span class="line">            <span class="keyword">for</span> ent <span class="keyword">in</span> doc.ents:</span><br><span class="line">                <span class="keyword">if</span> len(ent) &gt; <span class="number">1</span>:</span><br><span class="line">                    <span class="comment"># Merge them into single tokens</span></span><br><span class="line">                    ent.merge(ent.root.tag_, ent.text, ent.label_)</span><br><span class="line">        dat = doc.to_array([attr, LIKE_EMAIL, LIKE_URL]).astype(<span class="string">'int32'</span>)</span><br><span class="line">        <span class="keyword">if</span> len(dat) &gt; <span class="number">0</span>:</span><br><span class="line">            dat = dat.astype(<span class="string">'int32'</span>)</span><br><span class="line">            msg = <span class="string">"Negative indices reserved for special tokens"</span></span><br><span class="line">            <span class="keyword">assert</span> dat.min() &gt;= <span class="number">0</span>, msg</span><br><span class="line">            <span class="comment"># Replace email and URL tokens</span></span><br><span class="line">            idx = (dat[:, <span class="number">1</span>] &gt; <span class="number">0</span>) | (dat[:, <span class="number">2</span>] &gt; <span class="number">0</span>)</span><br><span class="line">            dat[idx] = skip</span><br><span class="line">            length = min(len(dat), max_length)</span><br><span class="line">            data[row, :length] = dat[:length, <span class="number">0</span>].ravel()</span><br><span class="line">    uniques = np.unique(data)</span><br><span class="line">    vocab = &#123;v: nlp.vocab[v].lower_ <span class="keyword">for</span> v <span class="keyword">in</span> uniques <span class="keyword">if</span> v != skip&#125;</span><br><span class="line">    vocab[skip] = <span class="string">'&lt;SKIP&gt;'</span></span><br><span class="line">    <span class="keyword">return</span> data, vocab</span><br></pre></td></tr></table></figure>
@@ -209,12 +205,12 @@
     <nav class="pf-paginator">
       
          
-          <a href="/2018/12/06/Automatic-Summarization-Paper-Note/" data-hover="Automatic Summarization Paper Note">上一篇</a>      
+          <a href="/2018/12/06/Automatic-Summarization-Paper-Note/" data-hover="Automatic Summarization Paper Note">Prev</a>      
             
         
       
         
-        <a href="/2018/08/21/gensim/" data-hover="Gensim入门"> 下一篇</a>
+        <a href="/2018/08/21/gensim/" data-hover="Gensim入门"> Next</a>
             
   </nav>   
   </div>
@@ -254,7 +250,7 @@
     
     <div class="search-container sildeUpMin">
         <div class="search-header">
-            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
+            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
             <span class="search-cancel iconfont icon-cancel"></span>
         </div>
         <div id="search-result" class="search-result"></div>
@@ -269,49 +265,36 @@
          
             
 
-            <a class="mobile-menu-link" href="/">首页
+            <a class="mobile-menu-link" href="/">Home
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/archives">归档
+            <a class="mobile-menu-link" href="/archives">Archives
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/tags">标签
+            <a class="mobile-menu-link" href="/tags">Tags
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/about">关于
+            <a class="mobile-menu-link" href="/about">About
             </a>
             
          
                           
 
-            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
+            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
             
          
       
 </div>        
     
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?636802045446222199ae541e32c8133e"; 
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-
 
 
 
