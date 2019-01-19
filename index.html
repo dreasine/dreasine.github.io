@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
 <html>
   <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   
   
@@ -13,14 +13,14 @@
   
 
 
-  <link rel="stylesheet" href="/nayo.min.css"> 
+  <link rel="stylesheet" href="/nayo.min.css"><!-- hexo-inject:begin --><!-- hexo-inject:end --> 
 <link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
 <script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
 </head>  
   <body>   
     
       
-<header class="header">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="header">
 	
   <nav class="header-nav">        
    
@@ -30,25 +30,25 @@
               
             
 
-              <a class="header-menu-link" id="header-menu-home" href="/">Home</a>     
+              <a class="header-menu-link" id="header-menu-home" href="/">首页</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-archives" href="/archives">Archives</a>     
+              <a class="header-menu-link" id="header-menu-archives" href="/archives">归档</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-tags" href="/tags">Tags</a>     
+              <a class="header-menu-link" id="header-menu-tags" href="/tags">标签</a>     
 
             
             
             
 
-              <a class="header-menu-link" id="header-menu-about" href="/about">About</a>     
+              <a class="header-menu-link" id="header-menu-about" href="/about">关于</a>     
 
             
             
@@ -138,12 +138,12 @@
     
 	<div class="article-excerpt">	
 		
-			<div id="aplayer-zplhwAJb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+			<div id="aplayer-mhAnVGSW" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-zplhwAJb"),
+            element: document.getElementById("aplayer-mhAnVGSW"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -162,7 +162,74 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/8102/08/02/welcome/">Continue</a> 	
+		<a class="article-readmore" href="/8102/08/02/welcome/">阅读更多</a> 	
+	</div>	
+    
+</article>     
+     	
+    	  	
+  		
+    			
+
+<article class="article">		
+	   
+	<div class="article-header">
+	    
+		<a class="article-title" href="/2019/01/19/LaTex-grammar/">LaTeX 語法與示範</a>  
+	       
+		 
+
+		<div class="article-meta">
+			Jan 19, 2019
+			
+				<span class="iconfont icon-star"></span>
+				            
+						<a class="article-tag" href="/tags/tools/">tools</a>           
+				
+			
+		</div>
+	</div>
+
+
+	
+
+    
+	<div class="article-excerpt">	
+		
+			<p>轉自<a href="https://hackmd.io/s/B1RwlM85Z" target="_blank" rel="noopener">HackMD</a></p>
+<h2 id="LaTex-基本"><a href="#LaTex-基本" class="headerlink" title="LaTex 基本"></a>LaTex 基本</h2><h3 id="數學式的開始與結束都是"><a href="#數學式的開始與結束都是" class="headerlink" title="數學式的開始與結束都是$"></a>數學式的開始與結束都是<code>$</code></h3><ul>
+<li>如我們想表達: N(b, d) = (b − 1) M<ul>
+<li>使用 LaTeX 後變成: $N(b,d)=(b-1)M$</li>
+</ul>
+</li>
+</ul>
+<p>另外，==<code>$</code>需緊鄰著數學式==，也就是中間不能有任何空白鍵，否則一樣無法辨識為 LaTeX!</p>
+<ul>
+<li>一樣以 $N(b,d)=(b-1)M$ 為例<ul>
+<li><code>$</code>插入空白: <ul>
+<li>$ N(b,d)=(b-1)M$ (開始的<code>$</code>後插入空白)</li>
+<li>$N(b,d)=(b-1)M $ (結束的<code>$</code>前插入空白)</li>
+<li>$ N(b,d)=(b-1)M $ (前後的<code>$</code>都插入空白)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>值得高興的是，除了<code>$</code>以外的符號都可以加入空白以增加可讀性，而不影響顯示結果<br>透過右鍵看 LaTeX Code 可以看出下面兩個式子的差異</p>
+<ul>
+<li>一樣以 $N(b,d)=(b-1)M$ 為例<ul>
+<li>任意插入 $n$ 個空白: <ul>
+<li>$N ( b ,      d )=( b - 1 )M$ </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+		  	  
+	</div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/2019/01/19/LaTex-grammar/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -202,7 +269,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2019/01/15/lyrics-generator/">Continue</a> 	
+		<a class="article-readmore" href="/2019/01/15/lyrics-generator/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -244,7 +311,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/12/06/Automatic-Summarization-Paper-Note/">Continue</a> 	
+		<a class="article-readmore" href="/2018/12/06/Automatic-Summarization-Paper-Note/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -285,7 +352,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/11/12/Problems-on-lda2vec/">Continue</a> 	
+		<a class="article-readmore" href="/2018/11/12/Problems-on-lda2vec/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -326,7 +393,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/08/21/gensim/">Continue</a> 	
+		<a class="article-readmore" href="/2018/08/21/gensim/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -466,7 +533,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/08/21/jupyter-shortcuts/">Continue</a> 	
+		<a class="article-readmore" href="/2018/08/21/jupyter-shortcuts/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -515,7 +582,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/08/21/Ubuntu-install/">Continue</a> 	
+		<a class="article-readmore" href="/2018/08/21/Ubuntu-install/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -559,7 +626,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/08/06/introduction-tensorflow/">Continue</a> 	
+		<a class="article-readmore" href="/2018/08/06/introduction-tensorflow/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -600,46 +667,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/08/06/machine-learning-tutorial/">Continue</a> 	
-	</div>	
-    
-</article>     
-     	
-    	  	
-  		
-    			
-
-<article class="article">		
-	   
-	<div class="article-header">
-	    
-		<a class="article-title" href="/2018/08/03/hexo-blog/">Hexo-blog搭建教程</a>  
-	       
-		 
-
-		<div class="article-meta">
-			Aug 03, 2018
-			
-				<span class="iconfont icon-star"></span>
-				            
-						<a class="article-tag" href="/tags/Hexo/">Hexo</a>           
-				
-			
-		</div>
-	</div>
-
-
-	
-
-    
-	<div class="article-excerpt">	
-		
-			<p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。</p>
-		  	  
-	</div>
-
-	<div class="article-bottom">
-		<a class="article-readmore" href="/2018/08/03/hexo-blog/">Continue</a> 	
+		<a class="article-readmore" href="/2018/08/06/machine-learning-tutorial/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -647,6 +675,19 @@
 
 
 
+ 
+   <nav class="paginator scrollIn">
+    
+
+   <span class="page-number"> Page <strong>1</strong>. </span>
+
+    
+        <a class="next" href="/page/2/"> 
+        下一页
+        <i class="iconfont icon-right"></i>
+        </a>
+    
+  </nav> 
 
           </section> 
       </div>            
@@ -661,7 +702,7 @@
     
     <div class="search-container sildeUpMin">
         <div class="search-header">
-            <input type="text" placeholder="Typing Something here." id="search-input" class="search-input">  
+            <input type="text" placeholder="输入你想搜索的" id="search-input" class="search-input">  
             <span class="search-cancel iconfont icon-cancel"></span>
         </div>
         <div id="search-result" class="search-result"></div>
@@ -676,31 +717,31 @@
          
             
 
-            <a class="mobile-menu-link" href="/">Home
+            <a class="mobile-menu-link" href="/">首页
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/archives">Archives
+            <a class="mobile-menu-link" href="/archives">归档
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/tags">Tags
+            <a class="mobile-menu-link" href="/tags">标签
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/about">About
+            <a class="mobile-menu-link" href="/about">关于
             </a>
             
          
                           
 
-            <a class="mobile-menu-link mobile-menu-search" href="#">Search </a>                 
+            <a class="mobile-menu-link mobile-menu-search" href="#">搜索 </a>                 
             
          
       
@@ -753,6 +794,23 @@ var _hmt = _hmt || [];
 
   
 
-    <script src="/nayo.bundle.js"></script>           
+    <script src="/nayo.bundle.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->           
   </body>        
 </html>
